@@ -81,6 +81,7 @@ Response 对象的属性：
 ```
 
 关于r.encoding和r.apparent_encoding的区别：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307101920516?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 如何理解“如果header中不存在charset”：通常我们得到的网页都是由某个角落的一个服务器“发出”的，而有些服务器对网页的编码有要求，其所用的编码就会保存在网页header中的charset，而如果没有charset，那么Respond对象的编码就默认为ISO-8859-1。
@@ -91,12 +92,15 @@ Response 对象的属性：
 在使用get方法获得网页的时候，由于网络连接可能不稳定，所以在使用该方法时需要编写“异常处理”的代码。
 
 requests库常用的异常：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307111425470?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 requests库中的raise_for_status函数可以帮助我们处理常用的异常：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307111823597?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 通用代码框架：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307112439552?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 测试：
@@ -104,9 +108,11 @@ requests库中的raise_for_status函数可以帮助我们处理常用的异常�
 
 #### HTTP协议和requests库方法
 重新看到Requests库的7个主要方法，后面6个一一对应HTTP的相关方法。
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307100648609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 下面接介绍HTTP协议：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307113843000?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 注：
 1.“请求与响应”：用户端发出请求，服务器做出响应。
@@ -114,13 +120,16 @@ requests库中的raise_for_status函数可以帮助我们处理常用的异常�
 3.“应用层协议”：该协议工作在HTTP协议之上
 
 常用URL格式：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307114248975?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 HTTP协议对资源的操作：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307121139920?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 可以把网络上的数据的所在位置是：云端，我们可通过get、head操作从云端获取数据（可以理解为文件的读操作），可通过put、post、patch、delete操作对数据进行修改（可以理解为文件的写操作）
 
 举例：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307121726683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![这里写图片描述](http://img.blog.csdn.net/20170307121738038?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![这里写图片描述](http://img.blog.csdn.net/20170307121747121?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
@@ -136,6 +145,7 @@ HTTP协议对资源的操作：
 ![这里写图片描述](http://img.blog.csdn.net/20170307123230066?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 kwargs的13个参数如下：
+
 ![0](http://img.blog.csdn.net/20170307124209385?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ![这里写图片描述](http://img.blog.csdn.net/20170307123359316?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
@@ -161,21 +171,26 @@ kwargs的13个参数如下：
 ![这里写图片描述](http://img.blog.csdn.net/20170307124114055?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **对于get函数**
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307124612791?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 这里的kwargs和上面的request函数的是一样的。
 
 前面提高，get、head、post、patch、delete、put这几个函数都是由request函数定义的，对于进行需要用到的参数，为了方便使用，这些新定义的函数就将这些参数“显式化”了。
 
 **对于head函数**
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307124756651?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **对于post函数**
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307124812486?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **对于patch函数**
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307124822940?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **对于delete函数**
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307124832096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
@@ -220,6 +235,7 @@ the total time is 14.201600s
 
 ### 2.网络爬虫的“盗亦有道”
 #### 网络爬虫引发的问题
+
 首先看网络爬虫的尺寸分类：
 ![这里写图片描述](http://img.blog.csdn.net/20170307160545572?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
@@ -230,16 +246,20 @@ the total time is 14.201600s
 ![这里写图片描述](http://img.blog.csdn.net/20170307161118355?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 #### robot协议
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307162026231?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 例子：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307162257203?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 其他例子：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307162311438?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 注：若一个网站没有robots协议，那么可认为该网站可被爬虫无限制地爬取。
 
 #### robot协议的遵守方式
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307162757644?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ![这里写图片描述](http://img.blog.csdn.net/20170307162808769?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
@@ -249,9 +269,11 @@ the total time is 14.201600s
 
 ### requests库网络爬虫实战（5个实例）
 #### 1.京东商品信息的爬取：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307163505335?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 #### 2.亚马逊商品页面的爬取：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307164110323?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 与上一个例子不同的是：这里需要修改headers以让程序模拟浏览器获取数据。
 
@@ -259,6 +281,7 @@ the total time is 14.201600s
 
 #### 3.百度/360搜索关键词提交
 搜索引擎关键词提交接口如下，可以发现只要替换了keyword这个关键词就可以实现关键词的提交了。
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307164402746?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 ![这里写图片描述](http://img.blog.csdn.net/20170307165104671?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
@@ -270,20 +293,26 @@ the total time is 14.201600s
 ![这里写图片描述](http://img.blog.csdn.net/20170307165351934?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 例子：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307165402579?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 简单版本：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307165829331?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 详细版本（相比上面的代码，这份代码显得更加稳定）：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307165841721?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 **注：这份代码的with...as....语句中的f.close()可以不用加上，该语句会进行相关的文件关闭的处理的。**
 
 #### 5.IP地址归属地查询
+
 首先，寻找可查询IP地址的接口，发现在www.ip138.com上有这个接口。通过测试，可发现ip地址查询的接口（下图下方的链接）：类似于上一个例子，只要替换ipaddress这个关键词就可以实现ip地址的查询了。
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307170356583?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 下面是测试交互界面和对应代码：
+
 ![这里写图片描述](http://img.blog.csdn.net/20170307170818601?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 ![这里写图片描述](http://img.blog.csdn.net/20170307170847080?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 注：这里输出respond对象的内容的时候，**都是取r.text的一部分的内容的**，而若直接输出r.text的所有内容，可能会引起对应IDE的失效（或者 输出负担过大）。
