@@ -152,7 +152,7 @@ PLA会停下来 等价于 在线性可分的条件下，PLA能找到一条可以
 
 对于非线性可分的数据集，我们无法找到一个可完全将数据集完全分离的超平面，因此只能推而求其次，找到一个能最接近f的g,也即是求下列优化问题：
 
-<img src="https://latex.codecogs.com/gif.latex?w_g&space;\leftarrow&space;\operatorname*{argmax}_n&space;\sum_{n=1}^{N}[&space;y_n&space;\neq&space;sign(w^T&space;x_n)]" title="w_g \leftarrow \operatorname*{argmax}_n \sum_{n=1}^{N}[ y_n \neq sign(w^T x_n)]" />
+<img src="https://latex.codecogs.com/gif.latex?w_g&space;\leftarrow&space;\operatorname*{argmin}_w&space;\sum_{n=1}^{N}[&space;y_n&space;\neq&space;sign(w^T&space;x_n)]" title="w_g \leftarrow \operatorname*{argmin}_w \sum_{n=1}^{N}[ y_n \neq sign(w^T x_n)]" />
 
 这个问题已被证明为NP-hard的。
 
