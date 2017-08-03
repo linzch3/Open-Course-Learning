@@ -1,4 +1,12 @@
+<!-- TOC -->
 
+- [class 2](#class-2)
+    - [1.感知器(perceptron)模型简介](#1感知器perceptron模型简介)
+    - [2.PLA: perceptron learning algorithm](#2pla-perceptron-learning-algorithm)
+    - [3.PLA什么时候会停下来](#3pla什么时候会停下来)
+    - [4.应用PLA在非线性可分的数据集上](#4应用pla在非线性可分的数据集上)
+
+<!-- /TOC -->
 # class 2
 
 ## 1.感知器(perceptron)模型简介
