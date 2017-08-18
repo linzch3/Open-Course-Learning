@@ -1,3 +1,23 @@
+<!-- TOC -->
+
+- [week 1](#week-1)
+    - [1-1 Game Theory Intro - TCP Backoff](#1-1-game-theory-intro---tcp-backoff)
+    - [1-2 Self-interested Agents and Utility Theory](#1-2-self-interested-agents-and-utility-theory)
+    - [1-3 Defining Games](#1-3-defining-games)
+    - [1-4 Example of Games](#1-4-example-of-games)
+    - [1-5 Nash Equilibrium（纳什均衡） Intro](#1-5-nash-equilibrium纳什均衡-intro)
+    - [1-6 Strategic Reasoning（战略推理）](#1-6-strategic-reasoning战略推理)
+    - [1-7 Best Response and Nash Equilibrium](#1-7-best-response-and-nash-equilibrium)
+    - [1-8 Nash Equilibrium of Example Games](#1-8-nash-equilibrium-of-example-games)
+        - [prisoner's dilemma(囚徒困境)](#prisoners-dilemma囚徒困境)
+        - [Which side of the road should you drive on?](#which-side-of-the-road-should-you-drive-on)
+        - [Battle of the Sexes](#battle-of-the-sexes)
+        - [Matching penny](#matching-penny)
+    - [1-9 Dominant Strategies（主导策略）](#1-9-dominant-strategies主导策略)
+    - [1-10 Pareto Optimality](#1-10-pareto-optimality)
+
+<!-- /TOC -->
+
 # week 1
 
 ## 1-1 Game Theory Intro - TCP Backoff
@@ -268,7 +288,7 @@ Pareto Optimal Outcomes in Example Games:
 
 <img src='./images/outcome.jpg'/>
 
-注：由于不同的player的收益函数之间的数值比例(scale)在这里无法得知，因此以左下的囚徒困境为例，(-1,-1)和(-4,0)、(0,-4)都属于Pareto-optimal，他们之间无法比较大小，而(3,3)之所以不是Pareto-optimal的是因为其被其他三个outcome Pareto-dominate。
+注：由于不同的player的收益函数之间的数值比例(scale)在这里无法得知，因此以右下的囚徒困境为例，(-1,-1)和(-4,0)、(0,-4)都属于Pareto-optimal，他们之间无法比较大小，而(3,3)之所以不是Pareto-optimal的是因为其被其他三个outcome Pareto-dominate。
 
 值得注意的是：**在囚徒困境中，唯一一个not Pareto Optimal的outcome是唯一的纳什均衡点。**
 
