@@ -6,10 +6,12 @@
     - [1-3 Defining Games](#1-3-defining-games)
     - [1-4 Example of Games](#1-4-example-of-games)
     - [1-5 Nash Equilibrium（纳什均衡） Intro](#1-5-nash-equilibrium纳什均衡-intro)
-    - [1-6 Strategic Reasoning（战略推理）](#1-6-strategic-reasoning战略推理)
+    - [1-6 Strategic Reasoning（策略推理）](#1-6-strategic-reasoning策略推理)
     - [1-7 Best Response and Nash Equilibrium](#1-7-best-response-and-nash-equilibrium)
+        - [Best Response](#best-response)
+        - [Nash Equilibrium](#nash-equilibrium)
     - [1-8 Nash Equilibrium of Example Games](#1-8-nash-equilibrium-of-example-games)
-        - [prisoner's dilemma(囚徒困境)](#prisoners-dilemma囚徒困境)
+        - [prisoner's dilemma（囚徒困境）](#prisoners-dilemma囚徒困境)
         - [Which side of the road should you drive on?](#which-side-of-the-road-should-you-drive-on)
         - [Battle of the Sexes](#battle-of-the-sexes)
         - [Matching penny](#matching-penny)
@@ -133,7 +135,10 @@ Example:
 关于纳什均衡，可以参考知乎中的如下理解：
 
 ```
-在发生一件事情（Game）的时候，假设在这个事情里，每个被牵扯进来的人都必须做出一个决策，每个人只能做关于自己的决定，而不能帮别人做决定。假设每个人都是非常聪明和理性的，做出的决策一定是对自己最有利的。如果在某种情况下，每个人都发现现在他们能做的已经是当前情况下最好的选择了，没有人想改变自己的策略，因为如果别人不改变策略的话，自己的选择已经没有办法更好了。如果每个人都是这样的，那么就没有人有改变策略的意愿，那么就是一个纳什均衡。
+在发生一件事情（Game）的时候，假设在这个事情里，每个被牵扯进来的人都必须做出一个决策，每个人只能做关于自己的决定，而不能帮别人做决定。
+假设每个人都是非常聪明和理性的，做出的决策一定是对自己最有利的。如果在某种情况下，每个人都发现现在他们能做的已经是当前情况下最好的选择
+了，没有人想改变自己的策略，因为如果别人不改变策略的话，自己的选择已经没有办法更好了。如果每个人都是这样的，那么就没有人有改变策略的意
+愿，那么就是一个纳什均衡。
 
 作者：David Dong
 链接：https://www.zhihu.com/question/19804990/answer/69370269
@@ -144,14 +149,15 @@ Example:
 这节课 主要介绍了一个Game:
 
 ```
-Each player names an integer between 1 and 100.The player who names the integer closest to two thirds of the average integer wins a prize, the other players get nothing.
+Each player names an integer between 1 and 100.The player who names the integer closest to two thirds of the average 
+integer wins a prize, the other players get nothing.
 
 注：这个Game是 the Beauty Contest Game的简单版本。
 ```
 
 这个Game就涉及到 **每个player要猜测其他player的决策进行决策** 的情况
 
-## 1-6 Strategic Reasoning（战略推理）
+## 1-6 Strategic Reasoning（策略推理）
 
 该节讲解上节提出的问题的solution。
 
@@ -173,10 +179,10 @@ Each player names an integer between 1 and 100.The player who names the integer 
 
 分析：
 
-1.图像中可看到数字67以上仍然有player选择，这说明该部分player是不够理智的。
-2.选择50的player最多
-3.相对较理智的player猜测可能有很多人会选择50，因此他们会选择50*2/3=33,而更加理智的player会选择33*2/3=22
-4.选择1的player的人数排名第二，该部分人知道纳什均衡，但是由于他们没有考虑到所有的player并不都是足够理智的（也即是纳什均衡的前提没有达到）
+- 1.图像中可看到数字67以上仍然有player选择，这说明该部分player是不够理智的。
+- 2.选择50的player最多
+- 3.相对较理智的player猜测可能有很多人会选择50，因此他们会选择50*2/3=33,而更加理智的player会选择33*2/3=22
+- 4.选择1的player的人数排名第二，该部分人知道纳什均衡，但是由于他们没有考虑到所有的player并不都是足够理智的（也即是纳什均衡的前提没有达到）
 
 若所有参与者再次参加这个Game,可能有如下的结果：
 
@@ -184,7 +190,7 @@ Each player names an integer between 1 and 100.The player who names the integer 
 
 分析：
 
-1.选择50和大于67的player基本消失，大部分player选择的数字向1靠拢，由于还是存在部分player不够理智的情况，所以最后还是无法达到纳什均衡点
+- 1.选择50和大于67的player基本消失，大部分player选择的数字向1靠拢，由于还是存在部分player不够理智的情况，所以最后还是无法达到纳什均衡点
 
 总结：
 
@@ -196,14 +202,14 @@ Each player names an integer between 1 and 100.The player who names the integer 
 
 这节给出Best Response和Nash Equilibrium的严格数学定义。
 
-Best Response：
+### Best Response
 
 对于第i个player，在其他player采取的行动<img src='./images/br1.jpg'/>已知的前提下，有如下的定义：
 
 <img src='./images/br3.jpg'/>
 其中BR(a-i)代表对其他player反映的Best Response的集合
 
-Nash Equilibrium:
+### Nash Equilibrium
 
 每个player的Response都是对其他player的Best Response，数学上则表示为：
 
@@ -211,7 +217,7 @@ Nash Equilibrium:
 
 ## 1-8 Nash Equilibrium of Example Games
 
-### prisoner's dilemma(囚徒困境)
+### prisoner's dilemma（囚徒困境）
 
 <img src='./images/prison-delimma.jpg'/>
 
