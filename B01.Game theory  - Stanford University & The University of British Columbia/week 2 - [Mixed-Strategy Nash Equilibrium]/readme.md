@@ -23,6 +23,10 @@
 **Mixed Strategies（混合策略**）：
 在每个给定信息下，只以某种概率选择不同策略（more than one action is played with positive probability, these actions are called the **support** of the mixed strategy）
 
+更多直观深入的理解可参考  [如何理解经济学中的混合策略 (Mixed Strategy) ？][1]
+
+[1]:https://www.zhihu.com/question/34133677
+
 **pure Strategies（纯策略）**：
 在每个给定信息下，只能选择一种特定策略（only one action is played with positive probability）
 
