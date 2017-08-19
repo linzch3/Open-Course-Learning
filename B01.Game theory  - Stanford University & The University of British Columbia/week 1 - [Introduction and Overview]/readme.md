@@ -246,6 +246,25 @@ integer wins a prize, the other players get nothing.
 分析：player 1选择heads，player 2的最优策略是选择tails;player 2选择tais,player 1选择tails；player 1选择tails,player 2选择heads;player 2选择heads,player 1选择heads。
 因此这里形成了一个循环，故不存在纳什均衡点。
 
+
+上面的这些判断 纳什均衡点 的办法多少有些结合实际game的意义。而倘若只给出含有payoff的game matrix，实际game的意义无从得知，因此需要一种更加深入而直接的方法来判断 纳什均衡点。
+
+给出如下的game:
+
+|    1/2    | L | R |
+| ---------- | --- |--- |
+| T |  2,2 | 0,2|
+| B |  1,2 | 3,3 |
+
+因为只有4个outcome，因此可遍历判断(T,L)/(T,R)/(B,L)/(B,R)这4个来判断哪些是纳什均衡点。
+
+判断的核心方法是： **如果一个outcome是纳什均衡点，那么所有的player都没有偏离该点的动机，即是处于该点时，谁离开该点谁就吃亏。**
+
+(T,L)： 假设该点可以向其他点(2个)偏离，player 1可使其向(T,B)偏离，但是因此player 1的payoff会损失1，因此player 1不会偏离该点；player 2可使其向(T,R)偏离，但是因此player 2的payoff不会增加，因此player 2不会偏离该点(这种情况比较特殊，一般我们认为只有payoff增加才会选择偏离当前点)；因此，该点是纳什均衡点。
+
+同理可判断，(T,R)/(B,L)不是纳什均衡点，(B,R)是纳什均衡点。
+
+
 ## 1-9 Dominant Strategies（主导策略）
 
 定义：
