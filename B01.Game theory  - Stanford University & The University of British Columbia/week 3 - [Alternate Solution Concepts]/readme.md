@@ -1,4 +1,18 @@
+<!-- TOC -->
 
+- [week 3](#week-3)
+    - [3-1 Beyond the Nash Equilibrium](#3-1-beyond-the-nash-equilibrium)
+    - [3-2 Strictly Dominated Strategies & Iterative Removal](#3-2-strictly-dominated-strategies--iterative-removal)
+        - [Iterated Removal of Strictly Dominated Strategies 的性质](#iterated-removal-of-strictly-dominated-strategies-的性质)
+        - [Weakly Dominated Strategies](#weakly-dominated-strategies)
+    - [3-3 Dominated Strategies & Iterative Removal: An Application](#3-3-dominated-strategies--iterative-removal-an-application)
+    - [3-4 Maxmin Strategies](#3-4-maxmin-strategies)
+        - [maxmin strategy & maxmin value](#maxmin-strategy--maxmin-value)
+        - [minmax strategy & minmax value](#minmax-strategy--minmax-value)
+        - [Minimax Theorem（极小值定理）](#minimax-theorem极小值定理)
+    - [3-5 Correlated Equilibrium（关联均衡）: Intuition](#3-5-correlated-equilibrium关联均衡-intuition)
+
+<!-- /TOC -->
 # week 3
 
 ## 3-1 Beyond the Nash Equilibrium
