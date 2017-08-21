@@ -102,6 +102,8 @@ Example:
 - s is a **subgame perfect equilibrium** of G iff **for any** subgame G′ of G, the restriction of s to G′ is a Nash equilibrium of G′.（即是在每个subgame中，没有一个player想偏离当前的局面）
 - this definition rules out “non-credible threats”（排除了“不可信威胁”）
 
+注意 Nash equilibrium 和 subgame perfect equilibrium 的一个明显的区别就是 ：（不严谨的说法）前者是只看整体的，对于不能达到的点并不在意是不是best respond的，而后者则是对每一个subtree的细节都要深究是不是best respond的。（可参考problem-set-4 第2和第3题）
+
 运用如下概念到之前的例子，有：
 
 <img src='./images/ex5.jpg'/>
