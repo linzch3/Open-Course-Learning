@@ -4,6 +4,9 @@
     - [5-1 Repeated Games](#5-1-repeated-games)
     - [5-2 Infinitely Repeated Games: Utility](#5-2-infinitely-repeated-games-utility)
     - [5-3 Stochastic Games](#5-3-stochastic-games)
+    - [5-4 Learning in Repeated Games](#5-4-learning-in-repeated-games)
+        - [Fictitious Play](#fictitious-play)
+        - [No-regret Learning](#no-regret-learning)
 
 <!-- /TOC -->
 # week 5
@@ -50,5 +53,49 @@ Can do analysis as with repeated games.
 - limit average reward
 - future discount reward
 
+## 5-4 Learning in Repeated Games
+
+two types of learning in repeated games.
+- Fictitious Play
+- No-regret Learning
+
+### Fictitious Play
+
+定义如下：
+
+<div align="center"><img src='./images/def4.png'/></div>
+
+不过，这里的“Break ties somehow.”不怎么理解。
+
+Example:
+
+<div align="center"><img src='./images/ex1.jpg'/></div>
+
+以Round 0到Round 1为介绍：
+
+player 1认为player 2 play heads的猜测次数是1.5从，play tails的猜测次数为2次，因此player 1认为player 2在下一轮（也就是Round 1）中会选择play tails，而player 1如果play tails则有>0的payoff。因此player 1会选择play tails。
+而对于player 2来说，其则认为player 1 play heads的概率比较大，因此为了play得与player 1不同（才有>0的payoff)，因此player 2会选择play tails。
+
+而当整个game持续play下去后，两者play heads或者tails的概率均为0.5，而**这恰好是这个game的纳什均衡点**。这是巧合吗？
+
+实际上，有如下的定理：
+
+<div align="center"><img src='./images/def5.jpg'/></div>
+
+注：empirical：经验的
+
+定理的一个重要条件是game要**收敛**，其需要满足如下的一些条件：
+
+<div align="center"><img src='./images/def6.jpg'/></div>
+
+注：
+- 1. generic payoffs：**unknown**
+- 2. potential game：**unknown**
+
+### No-regret Learning
+
+相关定义及说明：
+
+<div align="center"><img src='./images/def7.jpg'/></div>
 
 
