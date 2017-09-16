@@ -49,7 +49,8 @@
 ![这里写图片描述](http://img.blog.csdn.net/20170323195150076?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 框架中有两个模块是需要用户编写的（可理解为 为框架进行**配置**），另外的三个是已经实现的。
-![这里写图片描述](http://img.blog.csdn.net/20170323195236807?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGluemNoMw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+<img src="./images/structure.jpg"/>
 
 ### **1.2.scrapy爬虫框架解析**
 **Engine**
