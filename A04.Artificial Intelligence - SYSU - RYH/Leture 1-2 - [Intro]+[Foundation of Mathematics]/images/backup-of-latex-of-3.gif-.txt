@@ -1,0 +1,7 @@
+\\ P(car=C|openDoor=B) 
+\\ \\ = \frac{P(openDoor=B|car=C)*P(car=C)}{P(openDoor=B)}
+\\ \\ = \frac{P(openDoor=B|car=C)*P(car=C)}{\sum_{car \in E} P(car,openDoor=B)}
+\\ \\ = \frac{P(openDoor=B|car=C)*P(car=C)}{P(openDoor=B|car=A)*P(car=A)+P(openDoor=B|car=B)*P(car=B)+P(openDoor=B|car=C)*P(car=C)}
+\\ \\ = \frac{P(openDoor=B|car=C)*P(car=C)}{P(openDoor=B|car=A)*P(car=A)+0*P(car=B)+1*P(car=C)}
+\\ \\ = \frac{1*1/3}{1/2*1/3+0*1/3+1*1/3}
+\\ \\ = \frac{2}{3}
