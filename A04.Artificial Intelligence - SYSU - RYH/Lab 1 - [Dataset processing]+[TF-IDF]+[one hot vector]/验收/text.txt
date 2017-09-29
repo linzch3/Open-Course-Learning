@@ -1,0 +1,6 @@
+1	all:148 anger:22 disgust:2 fear:60 joy:0 sad:64 surprise:0	say you say me
+2	all:131 anger:0 disgust:0 fear:0 joy:93 sad:0 surprise:38	lay me down
+3	all:221 anger:18 disgust:0 fear:52 joy:66 sad:20 surprise:65	stay with me
+4	all:285 anger:66 disgust:39 fear:94 joy:0 sad:86 surprise:0	because you loved me
+5	all:99 anger:0 disgust:0 fear:25 joy:26 sad:2 surprise:46	me I my mine me my me
+6	all:62 anger:0 disgust:0 fear:0 joy:34 sad:0 surprise:28	you can trust me can you
