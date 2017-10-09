@@ -225,6 +225,28 @@ activity_main.xml创建时默认选择是ConstraintLayout。
         android:layout_marginTop="20dp"/>
 ```
 
+这里的button的形状需要自行实现（参考[这里][1]），实现文件放在drawable文件夹的my_button.xml中，代码如下：
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <corners android:radius="10dp"/>
+
+    <padding
+        android:top="10dp"
+        android:bottom="10dp"
+        android:left="20dp"
+        android:right="20dp"/>
+
+    <solid android:color="#3F51B5" />
+
+</shape>
+```
+
+[1]:http://blog.csdn.net/sysukehan/article/details/52022307
+
 ### 遇到的困难及解决思路
 
 一、sysu.jpg这个图像显示比示例的小，显示效果如下：
