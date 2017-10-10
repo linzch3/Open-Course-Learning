@@ -257,8 +257,22 @@ activity_main.xml创建时默认选择是ConstraintLayout。
 
 二、“登录”和“注册”这两个按钮的居中显示。
 
-- 解决方案：新建一条竖直放置于屏幕中间的Guideline，并设置两个button向其对齐即可。
+解决方案：新建一条竖直放置于屏幕中间的Guideline，并设置两个button向其对齐即可。但是在这里可能会遇到一个问题，那就是可能设置了button向Guideline距离为5dp或者20dp可能反应也不明显，以登录这个按钮为例，其可能的错误是将如下的代码（正确的）
 
+```xml
+    app:layout_constraintTop_toBottomOf="@id/radioGroup"
+    app:layout_constraintRight_toLeftOf="@id/guideline"
+```
+
+写成了：
+
+```xml
+    app:layout_constraintTop_toBottomOf="@id/radioGroup"
+    app:layout_constraintRight_toLeftOf="@id/guideline"
+    app:layout_constraintLeft_toLeftOf="parent"
+```
+
+也即是说 横向的约束这里写了两个，因此可能产生了一些冲突导致button没有正常与Guideline正确对齐。
 
 ## 实验思考及感想
 
