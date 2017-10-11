@@ -386,7 +386,7 @@ http://www.tik.ee.ethz.ch/~shapes/schema/processnetwork.xsd" name="example2">
 
 可以看到和example1的主要的区别就是：通过迭代器（iterator）定义了3个square模块。这里在.dot文件中也可以体现得出来。
 
-因此，总的来说，example2所做的事就是：由generator产生0-19的整数（length为20，初始值为0），用3个square对这些数依次进行平方操作（所以总的效果是对这些数进行了8次方的操作），最后由consumer输出结果。其运行结果如下：
+因此，总的来说，example2所做的事就是：由generator产生0-19的整数（length为20，初始值为0），用3个square对这些数依次进行平方操作（所以总的效果是对这些数进行了8次方的操作），最后由consumer输出结果。
 
 ## 实验任务
 
@@ -414,6 +414,8 @@ xdot example2/example2.dot
 ```
 
 运行结果如下，可见输出数据就是输入数据的4次方（2个square），符合预期。
+
+**注意：如果这里没有运行```sudo rm -rf example2```来删除原有的example文件夹，那么修改的代码是不会生效的。**
 
 ![10](./images/10.jpg)
 
