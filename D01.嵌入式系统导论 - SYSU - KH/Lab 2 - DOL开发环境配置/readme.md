@@ -159,7 +159,7 @@ sudo apt-get install xdot
 
 <img src="./images/1.jpg">
 
-这可能是因为已经安装了相关的环境，输入javac -v查询后如下：
+输入javac -v查询后如下：
 
 <img src="./images/2.jpg">
 
