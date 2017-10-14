@@ -440,13 +440,143 @@ xdot example1/example1.dot
 
 ### 任务三：结合论文分析编译过程
 
-TODO
+执行`sudo ant -f runexample.xml -Dnumber=1`的指令后，操作系统到底干了什么？
+
+运行该命令，根据输出的结果逐步解释输出内容。
+
+首先是输出一些运行环境相关的版本信息和一些文件的复制和创建操作。
+
+值得注意的是，这里出现了一个名为`example1_flattened.xml`的文件，查看其内容后可发现其文件内容与后续在`~/dol/examples/example1`生成的example1.xml的内容基本一致，唯一的区别就是前者的xml标签里面多了一个为basename的属性（这个小区别应该无关紧要）。
+```
+Buildfile: /home/lzc/dol/build/bin/main/runexample.xml
+
+showversion:
+
+showantversion:
+     [echo] Use Apache Ant(TM) version 1.9.6 compiled on July 8 2015.
+
+showjavaversion1:
+     [echo] Use Java version 1.8.0_131 (required version: 1.5.0 or higher).
+
+showjavaversion2:
+
+showjavacversion1:
+     [echo] Use Java version 1.8.0_131 (required version: 1.5.0 or higher).
+
+showjavacversion2:
+
+runexample:
+
+prepare:
+     [echo] Create directory example1.
+    [mkdir] Created dir: /home/lzc/dol/build/bin/main/example1
+     [echo] Copy C source files.
+    [mkdir] Created dir: /home/lzc/dol/build/bin/main/example1/src
+     [copy] Copying 7 files to /home/lzc/dol/build/bin/main/example1/src
+
+validate:
+     [echo] check XML compliance of example1_flattened.xml.
+     [java] /home/lzc/dol/examples/example1/example1.xml is valid.
+
+flatten1:
+     [echo] Create flattened XML example1_flattened.xml.
+     [java] .....................................
+    [javac] /home/lzc/dol/build/bin/main/runexample.xml:99: warning: 'includeantruntime' was not set, defaulting to build.sysclasspath=last; set to false for repeatable builds
+    [javac] Compiling 1 source file to /home/lzc/dol/build/bin/main/example1
+
+flatten2:
+```
+
+接下来开始运行DOL，这里有两个dol的执行步骤：dol1和dol2。
+
+dol1根据用于XML process network description的`example1_flattened.xml`文件生成.dot文件，用于可视化。
+
+```
+dol1:
+     [echo] Run DOL.
+     [java] Read process network from XML file
+     [java]  -- full filename: file:/home/lzc/dol/build/bin/main/example1/example1_flattened.xml
+     [java]  -- Process network model from XML [Finished]
+     [java] 
+     [java] Consistency check:
+     [java] APPL: Checking resource name ...
+     [java] APPL: Checking channel ports ...
+     [java] APPL: Checking channel connection ...
+     [java] APPL: Checking Process connection ...
+     [java]  -- Consistency check [Finished]
+     [java] 
+     [java] Generating ProcessNetwork in Dotty format:
+     [java]  -- Generation [Finished]
+     [java] 
+     [java] Generating HdS package:
+     [java]  -- Generation [Finished]
+     [java] 
+```
+
+dol2则是根据 `example1_flattened.xml`和相关的C文件生成一个可执行的SystemC应用(sc_application就是System C application的简写)并输出该应用的功能仿真结果。
+
+```
+dol2:
+
+execute:
+     [echo] Make HdS application.
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o sc_application.o sc_application.cpp
+     [exec] sc_application.cpp: In constructor ‘sc_application::sc_application(sc_core::sc_module_name)’:
+     [exec] sc_application.cpp:46:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec]      C2_ins("C2", 10)
+     [exec]                     ^
+     [exec] sc_application.cpp:46:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec] sc_application.cpp:46:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec] sc_application.cpp:46:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec] sc_application.cpp:46:20: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o dolSupport.o lib/dolSupport.cpp
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o ProcessWrapper.o lib/ProcessWrapper.cpp
+     [exec] lib/ProcessWrapper.cpp: In constructor ‘ProcessWrapper::ProcessWrapper(sc_core::sc_module_name)’:
+     [exec] lib/ProcessWrapper.cpp:16:51: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
+     [exec]          _iteratorIndex[i] = getIndex(_name, "_", i);
+     [exec]                                                    ^
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o Fifo.o lib/Fifo.cpp
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o WindowedFifo.o lib/WindowedFifo.cpp
+     [exec] lib/WindowedFifo.cpp: In member function ‘virtual unsigned int WindowedFifo::capture(void**, unsigned int)’:
+     [exec] lib/WindowedFifo.cpp:127:75: warning: operation on ‘((WindowedFifo*)this)->WindowedFifo::_tailRoom’ may be undefined [-Wsequence-point]
+     [exec]          _tailRoom = (_tail + read) == _size ? 0 : _tailRoom = _tail + read;
+     [exec]                                                                            ^
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o generator_wrapper.o sc_wrappers/generator_wrapper.cpp
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o consumer_wrapper.o sc_wrappers/consumer_wrapper.cpp
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses   -c -o square_wrapper.o sc_wrappers/square_wrapper.cpp
+     [exec] g++ -g -O0 -Wall -D__DOL_ETHZ_GEN__  -DINCLUDE_PROFILER  -I/home/lzc/systemc-2.3.1/include -Ilib -Isc_wrappers -Iprocesses -o sc_application sc_application.o dolSupport.o ProcessWrapper.o Fifo.o WindowedFifo.o generator_wrapper.o consumer_wrapper.o square_wrapper.o /home/lzc/systemc-2.3.1/lib-linux64/libsystemc.a # -lpthread -lX11 -lrt
+     [echo] Run HdS application.
+   [concat] consumer: 0.000000
+   [concat] consumer: 1.000000
+   [concat] consumer: 8.000000
+   [concat] consumer: 27.000000
+   [concat] consumer: 64.000000
+   [concat] consumer: 125.000000
+   [concat] consumer: 216.000000
+   [concat] consumer: 343.000000
+   [concat] consumer: 512.000000
+   [concat] consumer: 729.000000
+   [concat] consumer: 1000.000000
+   [concat] consumer: 1331.000000
+   [concat] consumer: 1728.000000
+   [concat] consumer: 2197.000000
+   [concat] consumer: 2744.000000
+   [concat] consumer: 3375.000000
+   [concat] consumer: 4096.000000
+   [concat] consumer: 4913.000000
+   [concat] consumer: 5832.000000
+   [concat] consumer: 6859.000000
+
+BUILD SUCCESSFUL
+Total time: 1 minute 1 second
+```
 
 # 附录
 
 ## 参考资料
 
 1.[linux下tree命令详解][1]
+
 2.[Linux文件夹文件创建、删除][2]
 
 
