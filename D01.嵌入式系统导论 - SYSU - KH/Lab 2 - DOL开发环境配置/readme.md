@@ -12,6 +12,7 @@
     - [2.1. 执行命令时遇到的问题及解决办法](#21-执行命令时遇到的问题及解决办法)
         - [2.1.1. 执行命令：sudo apt-get install openjdk-7-jdk](#211-执行命令sudo-apt-get-install-openjdk-7-jdk)
         - [2.1.2. 其他可能遇到的问题及解决方案](#212-其他可能遇到的问题及解决方案)
+    - [推荐阅读](#推荐阅读)
 
 <!-- /TOC -->
 # 1. Lab 2 - DOL开发环境配置
@@ -150,13 +151,33 @@ sudo apt-get install xdot
 
 这次说是说DOL开发环境配置，但是这DOL到底是什么东西？
 
-可参考这里：http://www.tik.ee.ethz.ch/~shapes/dol.html
+>分布式操作层（DOL）是用于编程并行应用程序的软件开发框架。DOL允许基于Kahn过程网络计算模型指定应用，并具有基于systemC的仿真引擎。此外，DOL提供基于XML的规范格式来描述多处理器系统上并行应用程序的实现，包括绑定和映射。
+
+其框架图如下：
+
+<img src="./images/12.png">
+
+更多可参考这里：http://www.tik.ee.ethz.ch/~shapes/dol.html
 
 除此之外，DOL还需要make，javac，ant等环境的支持，这又是些什么东西呢？
 
-关于make，可参考这里：http://blog.chinaunix.net/uid-9314244-id-2004686.html
+关于make:
 
-关于ant，可参考这里：http://blog.163.com/qiangyongbin2000@126/blog/static/77517819201151653423687/
+>在开发一个系统时，一般是将一个系统分成几个模块，这样做提高了系统的可维护性，但由于各个模块间不可避免存在关联，所以当一个模块改动后，其他模块也许会有所更新，当然对小系统来说，手工编译连接是没问题，但是如果是一个大系统，存在很多个模块，那么手工编译的方法就不适用了。为此，在Linux系统中，专门提供了一个make命令来自动维护目标文件，与手工编译和连接相比，make命令的优点在于他只更新修改过的文件（在Linux中，一个文件被创建或更新后有一个最后修改时间，make命令就是通过这个最后修改时间来判断此文件是否被修改），而对没修改的文件则置之不理，并且make命令不会漏掉一个需要更新的文件。
+
+更多可参考这里：
+
+http://blog.csdn.net/yg_2012/article/details/38925161
+
+http://blog.chinaunix.net/uid-9314244-id-2004686.html
+
+关于ant：
+
+>Ant是一种基于Java的build工具。理论上来说，它有些类似于（Unix）C中的make ，但没有make的缺陷。
+
+更多可参考这里：
+
+http://blog.163.com/qiangyongbin2000@126/blog/static/77517819201151653423687/
 
 关于java和javac：
 
@@ -200,3 +221,9 @@ sudo apt-get install xdot
 3.16.04的ubuntun需要安装jdk8，强行安装jdk7可能无法运行。
 
 4.dot文件可以直接进入到对应文件夹，双击打开，打开时会提醒你安装xdot工具。安装后就能打开
+
+## 推荐阅读
+
+1.[(SYSU)Embedded System 2016 by Gray][1]
+
+[1]:http://durant35.github.io/2016/10/01/TACouses_Embedded_System_2016/#Overview
