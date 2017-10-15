@@ -1,4 +1,3 @@
-<!-- TOC -->
 
 - [Lab 3 - DOL实例分析&编程](#lab-3---dol实例分析编程)
     - [example1分析](#example1分析)
@@ -109,7 +108,7 @@ xsi:schemaLocation="http://www.tik.ee.ethz.ch/~shapes/schema/PROCESSNETWORK
 
 ![2](./images/2.jpg)
 
-在这里，generator对应生产者，square对应处理模块，consumer对应x消费者。
+在这里，generator对应生产者，square对应处理模块，consumer对应消费者。
 
 src文件夹内包含各进程（生产者，消费者，处理模块等）的功能定义，有.c和.h这两种文件，对应实现的模块，即是.dot文件中的框框的功能描述。每个模块要实现2个接口，xxx_init 和 xxx_fire两个函数，分别是初始化这个模块是干了什么，以及这个模块开始干的时候做什么。
 
@@ -301,8 +300,12 @@ xdot example2.dot
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<processnetwork xmlns="http://www.tik.ee.ethz.ch/~shapes/schema/PROCESSNETWORK" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tik.ee.ethz.ch/~shapes/schema/PROCESSNETWORK
-http://www.tik.ee.ethz.ch/~shapes/schema/processnetwork.xsd" name="example2"> 
+<processnetwork 
+xmlns="http://www.tik.ee.ethz.ch/~shapes/schema/PROCESSNETWORK" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation=
+"http://www.tik.ee.ethz.ch/~shapes/schema/PROCESSNETWORKhttp://www.tik.ee.ethz.ch/~shapes/schema/processnetwork.xsd"
+name="example2"> 
 
   <variable value="3" name="N"/>
 
@@ -392,7 +395,7 @@ http://www.tik.ee.ethz.ch/~shapes/schema/processnetwork.xsd" name="example2">
 
 ### 任务一：修改example2，让3个square模块变成2个
 
-在example2的分析中，可以发现，3个square模块是根据迭代器（iterator）来生成的。而迭代次数N真是由如下代码声明的：
+在example2的分析中，可以发现，3个square模块是根据迭代器（iterator）来生成的。而迭代次数N是由如下代码声明的：
 
 ```xml
 <variable value="3" name="N"/>
@@ -440,9 +443,9 @@ xdot example1/example1.dot
 
 ### 任务三：结合论文分析编译过程
 
-执行`sudo ant -f runexample.xml -Dnumber=1`的指令后，操作系统到底干了什么？
+问题：执行`sudo ant -f runexample.xml -Dnumber=1`的指令后，操作系统到底干了什么？
 
-运行该命令，根据输出的结果逐步解释输出内容。
+那么便来运行该命令，根据输出的结果逐步解释输出内容。
 
 首先是输出一些运行环境相关的版本信息和一些文件的复制和创建操作。
 
