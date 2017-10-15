@@ -12,7 +12,7 @@
     - [2.1. 执行命令时遇到的问题及解决办法](#21-执行命令时遇到的问题及解决办法)
         - [2.1.1. 执行命令：sudo apt-get install openjdk-7-jdk](#211-执行命令sudo-apt-get-install-openjdk-7-jdk)
         - [2.1.2. 其他可能遇到的问题及解决方案](#212-其他可能遇到的问题及解决方案)
-    - [推荐阅读](#推荐阅读)
+    - [2.2. 推荐阅读](#22-推荐阅读)
 
 <!-- /TOC -->
 # 1. Lab 2 - DOL开发环境配置
@@ -85,7 +85,7 @@ sudo ../configure CXX=g++ --disable-async-updates
 ```
 运行结果为：
 
-<img src="./images/3.jpg">
+![](./images/3.jpg)
 
 接着输入：
 
@@ -95,23 +95,23 @@ sudo make install
 
 返回到上一级目录(`cd ..`)，查看所有文件，并输出当前的工作路径（这个后续会用到）
 
-<img src="./images/4.jpg">
+![](./images/4.jpg)
 
 回到刚刚dol的那个文件夹`cd ../dol`，找到build_zip.xml这个文件
 
-<img src="./images/5.jpg">
+![](./images/5.jpg)
 
 执行`sudo gedit build_zip.xml`命令，找到红色框中部分的两段代码：
 
-<img src="./images/6.jpg">
+![](./images/6.jpg)
 
 将蓝色部分的代码改为上面找到的systemC的工作路径，比如我的修改后则为：
 
-<img src="./images/7.jpg">
+![](./images/7.jpg)
 
 **注意：对于64位系统的机器，lib-linux要改成lib-linux64**，查询方式如下：
 
-<img src="./images/8.jpg">
+![](./images/8.jpg)
 
 ### 1.1.5. 编译dol
 
@@ -129,11 +129,11 @@ sudo ant -f runexample.xml -Dnumber=1
 
 运行后得到如下结果就算成功啦
 
-<img src="./images/9.jpg">
+![](./images/9.jpg)
 
 用ls命令发现在当前文件夹下多出了一个example1文件夹，打开后发现里面有个example1.dot文件
 
-<img src="./images/10.jpg">
+![](./images/10.jpg)
 
 .dot文件需要xdot等软件才能打开，因此使用如下命令安装xodt：
 
@@ -143,7 +143,7 @@ sudo apt-get install xdot
 
 安装完成后执行`xdot example1.dot`可看到：
 
-<img src="./images/11.jpg">
+![](./images/11.jpg)
 
 至此，环境搭建完成。
 
@@ -155,7 +155,7 @@ sudo apt-get install xdot
 
 其框架图如下：
 
-<img src="./images/12.png">
+![](./images/12.png)
 
 更多可参考这里：http://www.tik.ee.ethz.ch/~shapes/dol.html
 
@@ -212,11 +212,11 @@ https://en.wikipedia.org/wiki/SystemC
 
 在执行`sudo apt-get install openjdk-7-jdk`命令时出现如下问题：
 
-<img src="./images/1.jpg">
+![](./images/1.jpg)
 
 输入javac -v查询后如下：
 
-<img src="./images/2.jpg">
+![](./images/2.jpg)
 
 因此，可能在我的这个ubuntu下不能安装`openjdk-7-jdk`，因此可根据上图安装`openjdk-8-jdk`：
 
@@ -241,7 +241,7 @@ https://en.wikipedia.org/wiki/SystemC
 
 4.dot文件可以直接进入到对应文件夹，双击打开，打开时会提醒你安装xdot工具。安装后就能打开
 
-## 推荐阅读
+## 2.2. 推荐阅读
 
 1.[(SYSU)Embedded System 2016 by Gray][1]
 
