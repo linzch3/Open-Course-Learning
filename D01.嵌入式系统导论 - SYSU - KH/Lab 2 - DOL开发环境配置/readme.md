@@ -113,6 +113,10 @@ sudo make install
 
 ![](./images/8.jpg)
 
+该步骤操作可参考[Linux系统查看系统是32位还是64位方法总结][Linux系统查看系统是32位还是64位方法总结]。
+
+[Linux系统查看系统是32位还是64位方法总结]:http://www.cnblogs.com/kerrycode/p/3785768.html
+
 ### 1.1.5. 编译dol
 
 接着输入如下命令，成功后会显示BUILD SUCCESSFUL
