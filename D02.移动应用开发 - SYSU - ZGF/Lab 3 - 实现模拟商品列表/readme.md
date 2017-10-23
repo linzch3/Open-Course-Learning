@@ -61,12 +61,12 @@
 
 ### 布局方面
 
-- [x] 1.商品列表界面
+- 1.商品列表界面
     - [x] 每一项为一个圆圈和一个名字，圆圈与名字均竖直居中。
     - [x] 圆圈中为名字的首字母，首字母要处于圆圈的中心，首字母为白色，名字为黑色，圆圈的颜色可自定义（尽量选择深色）。
 - 2.购物车列表界面
     - [x] 在商品表界面的基础上增加一个价格，价格为黑色。
-- [x] 3.商品详情界面
+- 3.商品详情界面
     - 顶部
         - [x] 顶部占整个界面的1/3。
         - [x] 每个商品的图片在商品数据中已给出，图片与当前view等高。
@@ -85,7 +85,7 @@
         - [x] “更多产品信息”底部的分隔区域高度也可自行调节，argb编码值为#1E000000。
     - 底部
         - [x] 按图照葫芦画瓢即可。
-- [x] 4.【特别提醒】
+- 4.【特别提醒】
     - [x] 这次的界面顶部都没有标题栏，需要用某些方法把它们去掉。
 
 ### 逻辑方面
@@ -457,12 +457,11 @@ mProductAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() 
 
 注意：如果不按照这样方式而是选择新建java class来创建activity的话，就需要在AndroidManifest.xml中注册该activity，否则app会出现闪退现象。而按照这种方式创建activity，AS会自动注册该activity，省了不少事呀。
 
+---
+
 #### 编写布局文件
 
 首先，实现activity_main2.xml，该布局最外层选用ConstraintLayout，内层选用RelativeLayout来实现（RelativeLayout这个实现是实验要求）。实现分为三个部分：顶部、中部和底部。
-
----
-
 
 ```java
 <?xml version="1.0" encoding="utf-8"?>
@@ -1153,11 +1152,15 @@ fab.setOnClickListener(new View.OnClickListener() {
 - xml中TextView引用已定义好的样式时出错：android.view.InflateException: Binary XML file line #14: Error inflating class
     - 解决方案：见[这里][18]
 - 正确添加FloatingActionButton的依赖后，在xml文件中加入该控件，运行app后闪退，出现如下的报错信息：
- ```java
-Caused by: android.view.InflateException: Binary XML file line #20: Binary XML file line #20: Error inflating class android.support.design.widget.FloatingActiongButton
-Caused by: android.view.InflateException: Binary XML file line #20: Error inflating class android.support.design.widget.FloatingActiongButton
-```
     - 解决方案：其实是拼错了！！！FloatingActiongButton中多了一个g。
+ ```java
+Caused by: android.view.InflateException: 
+Binary XML file line #20: Binary XML file line #20:
+Error inflating class android.support.design.widget.FloatingActiongButton
+Caused by: android.view.InflateException:
+Binary XML file line #20: Error inflating class 
+android.support.design.widget.FloatingActiongButton
+```
 
 
 ## 参考资料
