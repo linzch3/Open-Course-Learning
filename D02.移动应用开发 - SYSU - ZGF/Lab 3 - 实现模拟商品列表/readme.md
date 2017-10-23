@@ -13,12 +13,32 @@
         - [step2:实现商品列表](#step2实现商品列表)
             - [添加依赖](#添加依赖)
             - [RecyclerView介绍](#recyclerview介绍)
-            - [代码实现](#代码实现)
+            - [编写布局文件](#编写布局文件)
+            - [Product类实现](#product类实现)
+            - [ProductAdapter类实现](#productadapter类实现)
+            - [商品列表显示实现](#商品列表显示实现)
             - [实现效果](#实现效果-1)
         - [step3:实现商品详细内容界面](#step3实现商品详细内容界面)
+            - [编写布局文件](#编写布局文件-1)
+            - [ProductDetail类实现](#productdetail类实现)
+            - [得到布局元素对应的对象](#得到布局元素对应的对象)
+            - [商品详细信息存储与读取功能实现](#商品详细信息存储与读取功能实现)
+            - [返回按钮功能实现](#返回按钮功能实现)
+            - [收藏按钮功能实现](#收藏按钮功能实现)
+            - [加入购物车功能实现](#加入购物车功能实现)
+            - [界面下方的列表实现](#界面下方的列表实现)
             - [实现效果](#实现效果-2)
-        - [step4:实现购物车内容界面](#step4实现购物车内容界面)
+        - [step4:购物车内容界面实现](#step4购物车内容界面实现)
+            - [编写布局文件](#编写布局文件-2)
+            - [列表显示实现](#列表显示实现)
+            - [列表点击事件监听实现](#列表点击事件监听实现)
+            - [列表长按事件监听实现](#列表长按事件监听实现)
+            - [本地广播接收数据实现](#本地广播接收数据实现)
             - [实现效果](#实现效果-3)
+        - [step5:悬浮动作按钮实现](#step5悬浮动作按钮实现)
+            - [编写布局文件](#编写布局文件-3)
+            - [代码实现](#代码实现)
+            - [实现效果](#实现效果-4)
     - [遇到的问题以及解决方案](#遇到的问题以及解决方案)
 
 <!-- /TOC -->
@@ -175,27 +195,29 @@ RecyclerView项目结构如下：
 - Adapter：使用RecyclerView之前，其需要一个继承自RecyclerView.Adapter的适配器，作用是将数据与每一个item的界面进行绑定。
 - LayoutManager：用来确定每一个item如何进行排列摆放，何时展示和隐藏。回收或重用一个View的时候，LayoutManager会向适配器请求新的数据来替换旧的数据，这种机制避免了创建过多的View和频繁的调用findViewById方法（与ListView原理类似）。
 
-#### 代码实现
+#### 编写布局文件
 
-首先，由于商品列表界面只显示商品名称和名称的第一个字母的大写形式，因此实现如下Product类供后续操作：
+首先，在对应MainActivity.java的布局文件activity_main.xml中添加RecyclerView控件，添加后代码如下：
 
-```java
-public class Product {
-    private String name;
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.linzch3.lab3.MainActivity">
 
-    public Product(String name){
-        this.name = name;
-    }
-    public String getName(){
-        return name;
-    }
-    public String getName_firstLetter(){
-        return  String.valueOf(name.charAt(0)).toUpperCase();
-    }
-}
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v7.widget.RecyclerView>
+</android.support.design.widget.CoordinatorLayout>
+
 ```
 
-接着来实现一个layout来定义RecyclerView中每个子项是如何显示的，新建product_item.xml:
+接着实现一个layout来定义RecyclerView中每个子项是如何显示的，新建product_item.xml:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,6 +257,29 @@ public class Product {
 这里TextView中设置了text属性供编写这个layout时debug用，通过preview可以看到其效果如下，符合预期。
 
 ![](./images/6.jpg)
+
+
+#### Product类实现
+
+首先，由于商品列表界面只显示商品名称和名称的第一个字母的大写形式，因此实现如下Product类供后续操作：
+
+```java
+public class Product {
+    private String name;
+
+    public Product(String name){
+        this.name = name;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getName_firstLetter(){
+        return  String.valueOf(name.charAt(0)).toUpperCase();
+    }
+}
+```
+
+#### ProductAdapter类实现
 
 接着来为RecyclerView实现基于Product类的Adapter。新建ProductAdapter类，让这个Adapter继承自RecyclerView.Adapter，并将泛型指定为ProductAdapter.ViewHolder。其中，ViewHolder是该类的一个静态子类。
 
@@ -321,27 +366,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 }
 ```
 
+#### 商品列表显示实现
+
 接下来就可以在MainActivity.java中实现商品列表啦。
 
-首先，在对应MainActivity.java的布局文件activity_main.xml中添加RecyclerView控件，添加后代码如下：
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.linzch3.lab3.MainActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
-</android.support.design.widget.CoordinatorLayout>
-
-```
 首先，在类中声明如下变量：
 
 ```java
@@ -354,6 +382,21 @@ private RecyclerView mRecyclerView;
 ```java
 initProducts();//初始化商品列表数据
 mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+```
+
+其中,成员函数initProducts实现如下：
+
+```java
+void initProducts(){
+    /*初始化商品列表数据*/
+    String [] names = new String[] {"Enchated Forest", "Arla Milk", "Devondale Milk",
+                                    "Kindle Oasis", "waitrose 早餐麦片", "Mcvitie's 饼干",
+                                    "Ferrero Rocher", "Maltesers", "Lindt", "Borggreve"};
+    for(int i=0; i < names.length; i++){
+        Product product = new Product(names[i]);
+        mProductList.add(product);
+    }
+}
 ```
 
 并接着添加如下代码：
@@ -400,20 +443,708 @@ mProductAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() 
 
 ### step3:实现商品详细内容界面
 
-该界面需要在一个新的activity中
-```java
+该界面需要在一个新的activity中实现，所以接下来要新建一个新的activity，按下图所示创建一个Empty Activity。
 
+![](./images/7.png)
+
+接着按照默认配置，点击Finish即可。
+
+![](./images/8.jpg)
+
+按照默认，该activity的命名为Main2Activity，其生成的layout名字则为activity_main2.xml。
+
+---
+
+注意：如果不按照这样方式而是选择新建java class来创建activity的话，就需要在AndroidManifest.xml中注册该activity，否则app会出现闪退现象。而按照这种方式创建activity，AS会自动注册该activity，省了不少事呀。
+
+#### 编写布局文件
+
+首先，实现activity_main2.xml，该布局最外层选用ConstraintLayout，内层选用RelativeLayout来实现（RelativeLayout这个实现是实验要求）。实现分为三个部分：顶部、中部和底部。
+
+---
+
+
+```java
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.linzch3.lab3.Main2Activity">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.333" />
+
+    <RelativeLayout
+        android:id="@+id/details_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        android:background="@color/gray2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/enchated_forest_pic"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"/>
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_icon"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enchated Forest"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:layout_alignLeft="@id/back_icon"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"/>
+        <ImageView
+            android:id="@+id/star_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/empty_star_icon"
+            android:layout_alignParentRight="true"
+            android:layout_alignBottom="@id/product_name"
+            android:layout_marginRight="10dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:id="@+id/details_middle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/details_top"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent">
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$5.00"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"/>
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="作者"
+            android:textColor="@color/gray1"
+            android:textSize="15sp"
+            android:layout_alignLeft="@id/product_price"
+            android:layout_below="@id/product_price"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/type_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jphanna Basford"
+            android:textColor="@color/gray1"
+            android:textSize="15sp"
+            android:layout_alignBottom="@id/type"
+            android:layout_toRightOf="@id/type"
+            android:layout_marginLeft="5dp" />
+        <ImageButton
+            android:id="@+id/buy_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/buy_icon"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+        <View
+            android:id="@+id/divide_line1"
+            android:layout_width="344dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/type"
+            android:background="@color/gray2" />
+        <View
+            android:id="@+id/divide_line2"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_toLeftOf="@id/buy_icon"
+            android:layout_alignTop="@id/buy_icon"
+            android:layout_alignBottom="@id/buy_icon"
+            android:layout_marginRight="10dp"
+            android:background="@color/gray2" />
+        <TextView
+            android:id="@+id/more_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更多产品信息"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_below="@id/divide_line1"
+            android:layout_alignLeft="@id/product_price"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divide_area"
+        android:layout_height="20dp"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/details_middle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/gray2"/>
+
+    <ListView
+        android:background="@color/white"
+        android:id="@+id/list_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/divide_area"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    
+</android.support.constraint.ConstraintLayout>
 ```
-```java
 
+实现后preview的效果如下，左右两图依次是是带有布局线和没有布局线的效果图。显示效果符合预期。
+
+![](./images/9.jpg)
+
+#### ProductDetail类实现
+
+由于需要将产品名称和产品其他信息建立一个映射，因此为了方便，新建一个ProductDetail类来存储产品的其他信息：
+
+```java
+public class ProductDetail {
+    private String price, type, info;//价格、类型、信息
+    private int imageId;//图片资源
+
+    public ProductDetail(String price, String type, String info, int imageId){
+        this.price = price;
+        this.type = type;
+        this.info = info;
+        this.imageId = imageId;
+    }
+
+    public String getPrice(){
+        return price;
+    }
+    public String getType(){
+        return type;
+    }
+    public String getInfo(){
+        return info;
+    }
+    public int getImageId(){
+        return imageId;
+    }
+}
+```
+
+#### 得到布局元素对应的对象
+
+接下来便可以在Main2Activity.java中编写代码了。
+
+首先，先在onCreate函数中得到布局元素对应的对象以供后续操作。
+
+```java
+ListView mlistView = (ListView) findViewById(R.id.list_view);
+ImageView mProductImage = (ImageView) findViewById(R.id.product_image);
+final TextView mProductName = (TextView) findViewById(R.id.product_name);
+TextView mProductType = (TextView) findViewById(R.id.type);
+TextView mProductInfo = (TextView) findViewById(R.id.type_info);
+final TextView mProductPrice = (TextView) findViewById(R.id.product_price);
+ImageView mBackIcon = (ImageView) findViewById(R.id.back_icon);
+final ImageView mStarIcon = (ImageView) findViewById(R.id.star_icon);
+ImageButton mBuyIcon = (ImageButton) findViewById(R.id.buy_icon);
+```
+
+#### 商品详细信息存储与读取功能实现
+
+接着，先实现商品详细信息存储与读取功能。
+
+存储信息使用Map类实现，先在类中声明如下变量：
+
+```java
+private Map<String, ProductDetail> mProductDetailsMap = new HashMap<>();
+```
+
+并在onCreate函数中添加：
+
+```java
+initProductDetails();//初始化所有产品的详细信息
+```
+
+该函数initProductDetails实现如下：
+
+```java
+void initProductDetails(){
+    /*初始化所有产品的详细信息*/
+    String [] names = new String[] {"Enchated Forest", "Arla Milk", "Devondale Milk",
+            "Kindle Oasis", "waitrose 早餐麦片", "Mcvitie's 饼干",
+            "Ferrero Rocher", "Maltesers", "Lindt", "Borggreve"};
+    String [] prices = new String[] {"¥ 5.00", "¥ 59.00", "¥ 79.00", "¥ 2399.00",
+            "¥ 179.00", "¥ 14.90", "¥ 132.59", "¥ 141.43",
+            "¥ 139.43", "¥ 28.90"};
+    String [] types = new String[] {"作者", "产地", "产地", "版本", "重量", "产地", "重量",
+            "重量", "重量", "重量"};
+    String [] infos = new String[] {"Johanna Basford", "德国", "澳大利亚", "8GB", "2Kg",
+            "英国", "300g", "118g", "249g", "640g"};
+    int [] imagesIds = new int[] {R.drawable.enchated_forest_pic, R.drawable.arla_milk_pic,
+            R.drawable.devondale_milk_pic, R.drawable.kindle_oasis_pic,
+            R.drawable.waitrose_pic, R.drawable.mcvitie_pic,
+            R.drawable.ferrero_pic, R.drawable.maltesers_pic,
+            R.drawable.lindt_pic,R.drawable.borggreve_pic};
+
+    for(int i=0; i < names.length; i++){
+        ProductDetail productDetail = new ProductDetail(prices[i], types[i], infos[i], imagesIds[i]);
+        mProductDetailsMap.put(names[i], productDetail);
+    }
+}
+```
+
+接着依旧在onCreate函数中添加根据intent传递的数据加载对应商品的详细数据的功能：
+
+```java
+Bundle bundle = getIntent().getExtras();
+String targetProductName = bundle.getString("产品名称");
+ProductDetail productDetail = mProductDetailsMap.get(targetProductName);
+mProductName.setText(targetProductName);
+mProductPrice.setText(productDetail.getPrice());
+mProductType.setText(productDetail.getType());
+mProductInfo.setText(productDetail.getInfo());
+mProductImage.setImageResource(productDetail.getImageId());
+```
+
+#### 返回按钮功能实现
+
+这里实现当点击返回图标时返回到上一个界面，实现思路就是点击返回图标时结束当前的Main2Activity。
+
+```java
+mBackIcon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        finish();
+    }
+});
+```
+
+注：随后的几个功能的实现都是在onCreate函数中，后续不再提及。
+
+#### 收藏按钮功能实现
+
+首先，声明类变量isFullStar来标记收藏按钮下一次是否是实心的。
+
+```java
+private boolean isFullStar;
+```
+
+在onCreate函数中初始化为true:
+
+```java
+isFullStar = true;
+```
+
+接着根据isFullStar的状态来实现收藏按钮的空心形状和实心形状的切换：
+
+```java
+mStarIcon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        if(isFullStar){
+            mStarIcon.setImageResource(R.drawable.full_star_icon);
+            isFullStar = false;
+        }else{
+            mStarIcon.setImageResource(R.drawable.empty_star_icon);
+            isFullStar = true;
+        }
+    }
+});
+```
+
+#### 加入购物车功能实现
+
+这里选用本地广播来实现该功能。首先声明类变量：
+
+```java
+private LocalBroadcastManager mLocalBroadcastManager;
+```
+
+接着在onCreate函数中实例化本地广播管理器：
+
+```java
+mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+```
+
+接着设置当购物车图标被点击时弹出Toast信息，并通过intent+本地广播的形式将数据广播出去。
+
+```java
+mBuyIcon.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(Main2Activity.this, "商品已添加到购物车", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent("com.linzch3.lab3.LOCAL_BROADCAST");
+        Bundle bundle = new Bundle();
+        bundle.putString("产品名称", mProductName.getText().toString());
+        bundle.putString("产品价格", mProductPrice.getText().toString());
+        intent.putExtras(bundle);
+        mLocalBroadcastManager.sendBroadcast(intent);
+    }
+});
+```
+#### 界面下方的列表实现
+
+界面下方的列表要求用ListView实现。由于只需要显示文字，这里选用Android自带的ArrayAdapter来作为ListView的Adapter。
+
+首先，新建一个layout文件来作为ListView子项的显示形式，命令为other_action_item.xml。需要注意，这个layout里面只能有一个TextView，实现如下：
+
+```xml
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="testword"
+    android:textSize="20sp"
+    android:textColor="@color/black"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:paddingLeft="10dp"
+    />
+```
+
+接着即可在onCreate函数中实现列表了：
+
+```java
+ String [] otherActionData = new String[] {"一键下单","分享商品","不敢兴趣","查看更多商品信息",""};
+mlistView.setAdapter(new ArrayAdapter<>(
+        Main2Activity.this, R.layout.other_action_item, otherActionData
+));
+```
+
+#### 实现效果
+
+实现效果如图，点击返回按钮后返回到上一界面，点击收藏按钮后可切换图标的空心和实心状态，点击购物车按钮后可弹出提示信息（将商品保存到购物车的测试在购物车实现后再进行）。
+
+![](./images/Animation2.gif)
+
+若无法观看动图，可点击<a href="https://github.com/linzch3/Open-Course-Learning/tree/master/D02.%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%20-%20SYSU%20-%20ZGF/Lab%203%20-%20%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%8B%9F%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8/images/Animation2.gif">这里</a>查看原图片。
+
+### step4:购物车内容界面实现
+
+#### 编写布局文件
+
+首先需要在activity_mian.xml文件中添加代表购物车列表的ListView：
+
+```xml
+<ListView
+    android:id="@+id/shopping_cart_list_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+</ListView>
+```
+
+接着再新建一个layout实现ListView子项的显示，命名为shopping_cart_item.xml：
+
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="25dp"
+    android:paddingBottom="25dp">
+
+    <TextView
+        android:id="@+id/product_name_firstLetter2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle"
+        android:gravity="center"
+        android:text="A"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/product_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"
+        android:text="A TEST"
+        android:maxEms="8"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/product_name_firstLetter2"
+        android:layout_marginLeft="15dp"/>
+
+    <TextView
+        android:id="@+id/product_price2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$ 5.00"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="60dp"
+        />
+
+</android.support.constraint.ConstraintLayout>
+```
+
+preview的效果为：
+
+![](./images/10.jpg)
+
+#### 列表显示实现
+
+首先，在类中声明如下变量：
+
+```java
+private List<Map<String, Object>> mShoppingCartList = new ArrayList<>();
+private ListView mListView;
+```
+
+并在onCreate函数中进行如下初始化：
+
+```java
+initShoppingCart();//初始化购物车
+mListView = (ListView) findViewById(R.id.shopping_cart_list_view);
+```
+
+其中initShoppingCart函数实现如下：
+
+```java
+void initShoppingCart(){
+        /*初始化购物车*/
+        Map<String, Object> temp = new LinkedHashMap<>();
+        temp.put("first_letter", "*");
+        temp.put("name", "购物车");
+        temp.put("price", "价格");
+        mShoppingCartList.add(temp);
+    }
+```
+
+接着添加如下代码即可实现列表的显示了：
+
+```java
+final SimpleAdapter mSimpleAdapter = new SimpleAdapter(this, mShoppingCartList, R.layout.shopping_cart_item,
+                new String[] {"first_letter","name", "price"},
+                new int[] {R.id.product_name_firstLetter2, R.id.product_name2, R.id.product_price2});
+        mListView.setAdapter(mSimpleAdapter);
+```
+
+#### 列表点击事件监听实现
+
+函数实现如下，需要注意的就是列表的第一段数据（即是写着“ * 购物车 价格”这一段）不需要响应点击事件。其使用inten传递商品名称数据到商品详细内容界面并跳转到该页面。
+
+```java
+mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /*点击跳转*/
+                if(position!=0){
+                    //Toast.makeText(MainActivity.this, "点击功能测试正常", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    Bundle bundle = new Bundle();
+                    String productName = mShoppingCartList.get(position).get("name").toString();
+                    bundle.putString("产品名称", productName);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+        });
+```
+
+#### 列表长按事件监听实现
+
+实现如下，同点击事件，这里列表的第一段数据也不需要响应长按事件。并且该函数的返回值需设置为true，表示长按事件触发后不再触发短按事件（短按事件可以理解为点击事件）。
+
+```java
+mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                //Toast.makeText(MainActivity.this, "长按事件测试正常", Toast.LENGTH_SHORT).show();
+                String productName = mShoppingCartList.get(position).get("name").toString();
+                final int pos = position;
+                if(pos!=0){
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("移除商品")
+                            .setMessage("从购物车移除"+productName+"?")
+                            .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mShoppingCartList.remove(pos);
+                                    mSimpleAdapter.notifyDataSetChanged();
+                                }
+                            })
+                            .create().show();
+                }
+                return true;
+            }
+        });
+```
+#### 本地广播接收数据实现
+
+首先，在当前类中实现本地的广播接收器类LocalReceiver，其继承于BroadcastReceiver类。
+
+其实现：当带有`"com.linzch3.lab3.LOCAL_BROADCAST"`标志的“广播信号”传递过来的时，其会将intent携带过来的数据保存到购物车列表mShoppingCartList中。
+
+```java
+private class LocalReceiver extends BroadcastReceiver{
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        //Toast.makeText(MainActivity.this, "数据接收功能测试正常", Toast.LENGTH_SHORT).show();
+        Bundle bundle = intent.getExtras();
+        String targetProductName = bundle.getString("产品名称");
+        String targetProductPrice = bundle.getString("产品价格");
+        Map<String, Object> temp = new LinkedHashMap<>();
+        temp.put("first_letter", String.valueOf(targetProductName.charAt(0)).toUpperCase());
+        temp.put("name", targetProductName);
+        temp.put("price", targetProductPrice);
+        mShoppingCartList.add(temp);
+    }
+}
+```
+
+接在在类中声明：
+
+```java
+private LocalReceiver mLocalReceiver;
+private IntentFilter mIntentFilter;
+private LocalBroadcastManager mLocalBroadcastManager;
+```
+
+并在onCreate函数中添加如下代码即可实现本地广播接收数据功能。
+
+```java
+mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+mIntentFilter = new IntentFilter();
+mIntentFilter.addAction("com.linzch3.lab3.LOCAL_BROADCAST");
+mLocalReceiver = new LocalReceiver();
+mLocalBroadcastManager.registerReceiver(mLocalReceiver, mIntentFilter);//注册广播接收器
+```
+
+但是需要注意，使用本地广播的方法时，需要重载onDestroy函数，要在其中添加广播接收器的注销代码：
+
+```java
+protected void onDestroy() {
+    super.onDestroy();
+    mLocalBroadcastManager.unregisterReceiver(mLocalReceiver);
+}
 ```
 #### 实现效果
 
-### step4:实现购物车内容界面
-```java
+该部分测试在fab实现后再进行。
 
+### step5:悬浮动作按钮实现
+
+#### 编写布局文件
+
+首先，在activity_mian.xml文件中引入fab：
+
+```xml
+<android.support.design.widget.FloatingActionButton
+    android:id="@+id/floating_action_bar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:src="@drawable/buy_icon"
+    android:backgroundTint="@color/white"
+    app:rippleColor="@color/white"
+    android:layout_margin="40dp"
+    app:borderWidth="0dp"
+    android:elevation="6dp"
+    app:pressedTranslationZ="12dp"
+    />
 ```
+
+这里设置fab在右下角放置，背景及边框均为白色以及点击前和点击时的阴影设置。
+
+#### 代码实现
+
+首先在类中声明如下变量标记当前是否是购物车界面。
+
+```java
+private boolean isShoppingCartView;
+```
+
+接着在onCreate函数中初始化为false：
+
+```java
+isShoppingCartView = false;
+```
+
+功能实现代码为：
+
+```java
+fab.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        //Toast.makeText(MainActivity.this, "点击fab", Toast.LENGTH_SHORT).show();
+        if(isShoppingCartView){
+            /*处于主界面视图*/
+            fab.setImageResource(R.drawable.buy_icon);
+            isShoppingCartView = false;
+            mRecyclerView.setVisibility(View.VISIBLE);
+            mListView.setVisibility(View.INVISIBLE);
+        }else{
+            /*处于购物车视图*/
+            fab.setImageResource(R.drawable.mainpage_icon);
+            isShoppingCartView = true;
+            mRecyclerView.setVisibility(View.INVISIBLE);
+            mListView.setVisibility(View.VISIBLE);
+        }
+    }
+});
+```
+
 #### 实现效果
+
+
+实现效果如图，初始fab图标为“购物车图标”，点击后图标转换为主页图标并跳转到购物车界面，在购物车界面点击图标还原上一步的过程。
+
+另外，这里也测试了购物车的相关功能。点击购物车中的商品可跳转到商品详细信息界面，返回后仍是购物车界面，长按某个商品会提示“是否删除xxx？”(xxx为商品名字)，点击确定后即可删除商品。
+
+![](./images/Animation3.gif)
+
+若无法观看动图，可点击<a href="https://github.com/linzch3/Open-Course-Learning/tree/master/D02.%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%20-%20SYSU%20-%20ZGF/Lab%203%20-%20%E5%AE%9E%E7%8E%B0%E6%A8%A1%E6%8B%9F%E5%95%86%E5%93%81%E5%88%97%E8%A1%A8/images/Animation3.gif">这里</a>查看原图片。
+
 
 ## 遇到的问题以及解决方案
 
