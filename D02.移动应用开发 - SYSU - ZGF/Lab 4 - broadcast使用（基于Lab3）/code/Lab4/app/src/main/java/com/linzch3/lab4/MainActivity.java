@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
@@ -205,8 +206,14 @@ public class MainActivity extends AppCompatActivity {
                 "¥ 179.00", "¥ 14.90", "¥ 132.59", "¥ 141.43",
                 "¥ 139.43", "¥ 28.90"};
 
+        int [] imagesIds = new int[] {R.drawable.enchated_forest_pic, R.drawable.arla_milk_pic,
+                R.drawable.devondale_milk_pic, R.drawable.kindle_oasis_pic,
+                R.drawable.waitrose_pic, R.drawable.mcvitie_pic,
+                R.drawable.ferrero_pic, R.drawable.maltesers_pic,
+                R.drawable.lindt_pic,R.drawable.borggreve_pic};
+
         for(int i=0; i < names.length; i++){
-            Product product = new Product(names[i], prices[i]);
+            Product product = new Product(names[i], prices[i], imagesIds[i]);
             mProductList.add(product);
         }
     }
@@ -245,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         Bundle mStartAppBundle = new Bundle();
         mStartAppBundle.putString("产品名称", luckyOne.getName());
         mStartAppBundle.putString("产品价格", luckyOne.getPrice());
+        mStartAppBundle.putInt("产品图片", luckyOne.getImageId());
         mStartAppIntent.putExtras(mStartAppBundle);
         sendBroadcast(mStartAppIntent);
     }

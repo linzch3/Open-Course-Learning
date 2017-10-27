@@ -26,6 +26,7 @@ public class StartAppReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         String productName = bundle.get("产品名称").toString();
         String productPrice = bundle.get("产品价格").toString();
+        int productImageId = bundle.getInt("产品图片");
         /*准备要跳转的数据*/
         Intent intent2DetailsPage = new Intent(context, Main2Activity.class);
         Bundle bundle2DetailPage = new Bundle();
@@ -40,7 +41,7 @@ public class StartAppReceiver extends BroadcastReceiver {
                 .setContentTitle("新商品热卖")
                 .setContentText(productName+"仅售"+productPrice+"!")
                 .setSmallIcon(R.drawable.buy_icon)
-                .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(),R.drawable.buy_icon))
+                .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), productImageId))
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(pi)
                 .setAutoCancel(true)

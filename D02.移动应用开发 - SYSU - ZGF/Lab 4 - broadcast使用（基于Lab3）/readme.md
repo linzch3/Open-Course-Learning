@@ -27,7 +27,6 @@
 注：
 
 - 这里的Android System的信息是无关信息，无须关注。
-- notification的通知显示中的图标可都用【购物车图标】代替。
 
 ## 实验步骤
 
@@ -52,12 +51,14 @@ void initProducts(){
     String [] names = new String[] {"Enchated Forest", "Arla Milk", "Devondale Milk",
                                     "Kindle Oasis", "waitrose 早餐麦片", "Mcvitie's 饼干",
                                     "Ferrero Rocher", "Maltesers", "Lindt", "Borggreve"};
-    String [] prices = new String[] {"¥ 5.00", "¥ 59.00", "¥ 79.00", "¥ 2399.00",
-            "¥ 179.00", "¥ 14.90", "¥ 132.59", "¥ 141.43",
-            "¥ 139.43", "¥ 28.90"};
+    int [] imagesIds = new int[] {R.drawable.enchated_forest_pic, R.drawable.arla_milk_pic,
+                R.drawable.devondale_milk_pic, R.drawable.kindle_oasis_pic,
+                R.drawable.waitrose_pic, R.drawable.mcvitie_pic,
+                R.drawable.ferrero_pic, R.drawable.maltesers_pic,
+                R.drawable.lindt_pic,R.drawable.borggreve_pic};
 
-    for(int i=0; i < names.length; i++){
-        Product product = new Product(names[i], prices[i]);
+     for(int i=0; i < names.length; i++){
+        Product product = new Product(names[i], prices[i], imagesIds[i]);
         mProductList.add(product);
     }
 }
@@ -77,6 +78,7 @@ void randomRecommendProduct(){
     Bundle mStartAppBundle = new Bundle();
     mStartAppBundle.putString("产品名称", luckyOne.getName());
     mStartAppBundle.putString("产品价格", luckyOne.getPrice());
+    mStartAppBundle.putInt("产品图片", luckyOne.getImageId());
     mStartAppIntent.putExtras(mStartAppBundle);
     sendBroadcast(mStartAppIntent);
 }
@@ -107,6 +109,7 @@ public class StartAppReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         String productName = bundle.get("产品名称").toString();
         String productPrice = bundle.get("产品价格").toString();
+        int productImageId = bundle.getInt("产品图片");
         /*准备要跳转的数据*/
         Intent intent2DetailsPage = new Intent(context, Main2Activity.class);
         Bundle bundle2DetailPage = new Bundle();
@@ -121,7 +124,7 @@ public class StartAppReceiver extends BroadcastReceiver {
                 .setContentTitle("新商品热卖")
                 .setContentText(productName+"仅售"+productPrice+"!")
                 .setSmallIcon(R.drawable.buy_icon)
-                .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(),R.drawable.buy_icon))
+                .setLargeIcon(BitmapFactory.decodeResource(mContext.getResources(), productImageId))
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(pi)
                 .setAutoCancel(true)
@@ -267,7 +270,7 @@ private class LocalReceiver extends BroadcastReceiver {
             //Toast.makeText(Main2Activity.this, "数据接收功能测试正常", Toast.LENGTH_SHORT).show();
             Bundle bundle = intent.getExtras();
             String productName = bundle.getString("产品名称");
-
+            int productImageId = bundle.getInt("产品图片");
             /*准备要跳转的数据*/
             Intent intent2ShoppingCart = new Intent(context, MainActivity.class);
             Bundle bundle2ShoppingCart = new Bundle();
@@ -283,7 +286,7 @@ private class LocalReceiver extends BroadcastReceiver {
                     .setContentTitle("马上下单")
                     .setContentText(productName+"已添加到购物车")
                     .setSmallIcon(R.drawable.buy_icon)
-                    .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.buy_icon))
+                    .setLargeIcon(BitmapFactory.decodeResource(getResources(), productImageId))
                     .setWhen(System.currentTimeMillis())
                     .setContentIntent(pi)
                     .setAutoCancel(true)
@@ -316,9 +319,12 @@ mLocalBroadcastManager.registerReceiver(mLocalReceiver, mIntentFilter);
 这样我们就可以在购物车图标的setOnClickListener函数的onClick函数中添加如下代码以实现**下单**时广播的发送。
 
 ```java
+int productImageId = productDetail.getImageId();//productDetail是当前页面商品数据的类，企其有保存商品的image ID
+
 Intent intent = new Intent(PRODUCT_ON_SHOPPING_CART);
 Bundle bundle = new Bundle();
 bundle.putString("产品名称",productName);
+bundle.putInt("产品图片", productImageId);
 intent.putExtras(bundle);
 mLocalBroadcastManager.sendBroadcast(intent);
 ```
