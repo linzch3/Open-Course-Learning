@@ -1,29 +1,20 @@
 package com.linzch3.lab4;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -35,6 +26,9 @@ import java.util.Map;
 import java.util.Random;
 
 import jp.wasabeef.recyclerview.adapters.ScaleInAnimationAdapter;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 
 public class MainActivity extends AppCompatActivity {
 

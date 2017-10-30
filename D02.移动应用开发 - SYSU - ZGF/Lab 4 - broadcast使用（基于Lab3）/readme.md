@@ -355,7 +355,7 @@ bundle2ShoppingCart.putBoolean("open shopping cart", true);
 
 那么接下来就只需要在MainAcitivity中实现代码了。
 
-首先，很重要的一点，由于多次下单后可能有多条未点开的下单通知，如果每次点开下单通知都新建一个Acitivity的话，这样不仅影响用于体验（要退出“当前界面”就需要按很多次返回键）而且还影响性能。
+首先，很重要的一点，由于多次下单后可能有多条未点开的下单通知，如果每次点开下单通知都新建一个MainAcitivity的话，这样不仅影响用于体验（要退出“当前界面”就需要按很多次返回键）而且还影响性能。
 
 因此，需要在AndroidManifest.xml中把：
 
@@ -367,10 +367,30 @@ bundle2ShoppingCart.putBoolean("open shopping cart", true);
 
 ```xml
 <activity android:name=".MainActivity"
-    android:launchMode="singleInstance">
+    android:launchMode="singleTask">
 ```
 
-这样将MainActivity的launchMode设置为singleInstance后就可以保证，MainActivity只会创建一个实例，新点开一个下单通知后不会再新建一个MainActivity。
+这样将MainActivity的launchMode设置为singleTask后就可以保证，简单的情况下，MainActivity只会创建一个实例（除非我们再创建一个任务栈并且再在这里新建一个MainAcitivity），新点开一个下单通知后不会再新建一个MainActivity（因为所有activity都是在同一个栈的）。
+
+---
+
+注意：如果这里的launchMode改成了singleInstance，从原理上讲是可以得到上面的效果，但是这样会出现一个很神奇的bug（现在还没有想明白）：
+
+首先，Main2Activity没有显式的设置launchMode，所以这launchMode就是默认的standard模式，也就是说每次打开这个activity，都会重新创建一个新的activity。
+
+但是事实上并不是这样，比如：首先打开app，此时即是MainActivity被创建，随后有notification推荐商品（假设为商品A），点击该notification会进入商品A的详细内容界面，在该界面上点击“购物车”图标，将该商品添加到购物车，随后会有一个新的notification显示下单的信息，点击该notification会进入购物车列表。
+
+（到这里一切正常，但是下面就开始出现奇怪问题了。）
+
+随后点击floationg action botton切换视图为商品列表视图，**随机点击一个商品B，进入商品的详细内容界面，这时会发现详细内容界面展示的商品信息是商品A的**。
+
+按照道理来说，Main2Activity在每次打开activity时都会新建一个新的activity，但是这里又和原理相违背？
+
+测试了之后也发现，若不改MainActivity的launchMode，则通过重载Main2Activity的onNewIntent函数，再在里面实现onCreate函数中的代码的话（也就是相当于重新创建一个活动），也可以实现我们最初想要的效果。
+
+所以，由于目前只有两个acitvity，故暂时可将launchMode改为singleTask来解决bug。
+
+---
 
 好，接下来先回顾下MainActivity中的商品列表和购物车列表是如何分开显示的。
 

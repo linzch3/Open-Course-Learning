@@ -164,6 +164,7 @@ public class Main2Activity extends AppCompatActivity {
             mProductDetailsMap.put(names[i], productDetail);
         }
     }
+
     /*本地广播相关*/
     private class LocalReceiver extends BroadcastReceiver {
         @Override
