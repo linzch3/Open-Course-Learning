@@ -433,7 +433,7 @@ void setCurrentView(){
 
 因此便有了这样的一个思路：购物车图标被点击时Main2Activity会传给MainActivity一个intent，那么我们只要在MainActivity中判断当前是否有intent传进来来设置isShoppingCartView的值即可实现目标了。
 
-但是，由于我们前面将MainActivity的launchMode设置为singleInstance，因此我们不能像往常一样在MainActivity的onCreate函数中写上**判断当前是否有intent传进来**的代码，因此MainActivity只创建一次，因此onCreate函数只创建一次，这样判断代码只能判断一次。在多次下单后点开下单通知后就不能先显示购物车列表了。
+但是，由于我们前面将MainActivity的launchMode设置为singleTask，因此我们不能像往常一样在MainActivity的onCreate函数中写上**判断当前是否有intent传进来**的代码，因此MainActivity只创建一次，因此onCreate函数只创建一次，这样判断代码只能判断一次。在多次下单后点开下单通知后就不能先显示购物车列表了。
 
 因此，我们需要重载MainActivity的onNewIntent函数，实现代码如下：
 
