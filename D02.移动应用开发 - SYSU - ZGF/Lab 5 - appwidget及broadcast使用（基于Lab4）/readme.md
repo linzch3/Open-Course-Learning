@@ -390,6 +390,7 @@ mAppWidget.unregisterWidgetBroadcast(); //注销widget的广播
 ## 遇到的问题及解决方案
 
 - [AppWidgetManager.getAppWidgetIds in activity returns an empty list][1]
+- [Android Studio中找不到模拟器][3]
 
 ## 参考资料
 
@@ -397,3 +398,4 @@ mAppWidget.unregisterWidgetBroadcast(); //注销widget的广播
 
 [1]:https://stackoverflow.com/questions/20273543/appwidgetmanager-getappwidgetids-in-activity-returns-an-empty-list
 [2]:http://www.cnblogs.com/skywang12345/p/3158310.html
+[3]:http://blog.csdn.net/wsgqp/article/details/51842079
