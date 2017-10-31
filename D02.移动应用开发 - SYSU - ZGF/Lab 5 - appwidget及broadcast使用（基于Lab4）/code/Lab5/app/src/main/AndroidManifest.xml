@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.linzch3.lab5">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/buy_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name="com.linzch3.lab5.MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.linzch3.lab5.Main2Activity" />
+
+        <!-- 监听app打开的接收器 -->
+        <receiver android:name="com.linzch3.lab5.StartAppReceiver">
+            <intent-filter>
+                <action android:name="com.linzch3.lab5.StartAppSingal" />
+            </intent-filter>
+        </receiver>
+        <!-- 监听app打开的接收器 -->
+        <receiver android:name="com.linzch3.lab5.mAppWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.linzch3.lab5.StartAppSingal" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/m_app_widget_info" />
+        </receiver>
+    </application>
+
+</manifest>
