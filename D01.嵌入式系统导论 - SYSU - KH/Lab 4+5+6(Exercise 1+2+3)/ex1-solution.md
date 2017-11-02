@@ -1,5 +1,5 @@
 
-## exercise 1
+# exercise 1
 
 ## 第一题
 
@@ -45,56 +45,22 @@
 
 解：两个矩阵A、B依次如下：
 
-$$
- A=\left[
- \begin{matrix}
-   1 & -1 \\\\
-   1 & -1 
-  \end{matrix}
-  \right]
-
- B=\left[
- \begin{matrix}
-   2 & -1 \\\\
-   1 & -1 
-  \end{matrix}
-  \right]
-$$
+![](https://latex.codecogs.com/gif.latex?A=\left[&space;\begin{matrix}&space;1&space;&&space;-1&space;\\\\&space;1&space;&&space;-1&space;\end{matrix}&space;\right]&space;B=\left[&space;\begin{matrix}&space;2&space;&&space;-1&space;\\\\&space;1&space;&&space;-1&space;\end{matrix}&space;\right])
 
 ### 判断两个矩阵是否是consistent的
 
 解：
 
--  由于$rank(A)=1$且矩阵列数为2，因此A是consistent的。
--  由于$rank(B)=2$且矩阵列数为2，因此B不是consistent的。
+-  由于rank(A)=1且矩阵列数为2，因此A是consistent的。
+-  由于rank(B)=2且矩阵列数为2，因此B不是consistent的。
 
 ### 若矩阵是consistent的，计算每个结点需要激活的次数
 
 解：由于只有A是consistent的，解方程：
 
-$$
- \left[
- \begin{matrix}
-   1 & -1 \\\\
-   1 & -1 
-  \end{matrix}
-  \right]
-   \left[
- \begin{matrix}
-   a \\\\
-   b
-  \end{matrix}
-  \right]
-  =
-     \left[
- \begin{matrix}
-   0 \\\\
-   0
-  \end{matrix}
-  \right]
-$$
+![](https://latex.codecogs.com/gif.latex?\left[&space;\begin{matrix}&space;1&space;&&space;-1&space;\\\\&space;1&space;&&space;-1&space;\end{matrix}&space;\right]&space;\left[&space;\begin{matrix}&space;a&space;\\\\&space;b&space;\end{matrix}&space;\right]&space;=&space;\left[&space;\begin{matrix}&space;0&space;\\\\&space;0&space;\end{matrix}&space;\right])
 
-在a和b均为**满足条件的最小正整数**的约束下，可解得：$a=1,b=1$。
+在a和b均为**满足条件的最小正整数**的约束下，可解得：a=1,b=1。
 
 因此，a和b结点均需要激活一次。
 
@@ -104,66 +70,19 @@ $$
 
 解：设该矩阵为A，则：
 
-$$
- A=\left[
- \begin{matrix}
-   1 & -1 &  0 &  0 &  0 &  0\\\\
-   0 &  1 & -1 &  0 &  0 &  0\\\\
-   0 &  0 & -1 &  0 &  0 &  77\\\\
-   0 &  0 &  1 & -1 &  0 &  0\\\\
-   0 &  0 &  0 &  1 & -77 &  0\\\\
-   0 &  0 &  0 &  0 &  1 &  -1
-  \end{matrix}
-  \right]
-$$
+![](https://latex.codecogs.com/gif.latex?A=\left[&space;\begin{matrix}&space;1&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;1&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;77\\\\&space;0&space;&&space;0&space;&&space;1&space;&&space;-1&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;0&space;&&space;1&space;&&space;-77&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;0&space;&&space;0&space;&&space;1&space;&&space;-1&space;\end{matrix}&space;\right])
 
 ### 判断矩阵是否是consistent的
 
-解：由于$rank(A)=5$且矩阵列数为6，因此A是consistent的。
+解：由于rank(A)=5且矩阵列数为6，因此A是consistent的。
 
 ### 若矩阵是consistent的，计算每个结点需要激活的次数
 
 解：解如下方程：
 
-$$
- \left[
- \begin{matrix}
-   1 & -1 &  0 &  0 &  0 &  0\\\\
-   0 &  1 & -1 &  0 &  0 &  0\\\\
-   0 &  0 & -1 &  0 &  0 &  77\\\\
-   0 &  0 &  1 & -1 &  0 &  0\\\\
-   0 &  0 &  0 &  1 & -77 &  0\\\\
-   0 &  0 &  0 &  0 &  1 &  -1
-  \end{matrix}
-  \right]
-   \left[
- \begin{matrix}
-    Quelle \\\\
-    DCT \\\\
-    Q \\\\
-    RLC \\\\
-    C \\\\
-    R
-  \end{matrix}
-  \right]
-  =
-     \left[
- \begin{matrix}
-   0 \\\\
-   0 \\\\
-   0 \\\\
-   0 \\\\
-   0 \\\\
-   0
-  \end{matrix}
-  \right]
-$$
+![](https://latex.codecogs.com/gif.latex?\left[&space;\begin{matrix}&space;1&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;1&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;-1&space;&&space;0&space;&&space;0&space;&&space;77\\\\&space;0&space;&&space;0&space;&&space;1&space;&&space;-1&space;&&space;0&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;0&space;&&space;1&space;&&space;-77&space;&&space;0\\\\&space;0&space;&&space;0&space;&&space;0&space;&&space;0&space;&&space;1&space;&&space;-1&space;\end{matrix}&space;\right]&space;\left[&space;\begin{matrix}&space;Quelle&space;\\\\&space;DCT&space;\\\\&space;Q&space;\\\\&space;RLC&space;\\\\&space;C&space;\\\\&space;R&space;\end{matrix}&space;\right]&space;=&space;\left[&space;\begin{matrix}&space;0&space;\\\\&space;0&space;\\\\&space;0&space;\\\\&space;0&space;\\\\&space;0&space;\\\\&space;0&space;\end{matrix}&space;\right])
 
-在所有变量均为**满足条件的最小正整数**的约束下，可解得：
-
-$$
-Quelle=DCT=Q=RLC=77,C=R=1
-$$
+在所有变量均为**满足条件的最小正整数**的约束下，可解得：Quelle=DCT=Q=RLC=77,C=R=1
 
 因此，Quelle、DCT、Q、RLC这4个结点需要激活77次，C、R这2个结点需要激活1次。
 
