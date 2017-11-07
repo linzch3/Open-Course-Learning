@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     /*购物车列表相关*/
     private List<Map<String, Object>> mShoppingCartList = new ArrayList<>();
     private ListView mListView;
+    private SimpleAdapter mSimpleAdapter;
     /*悬浮动作按钮相关*/
     private boolean isShoppingCartView;//标记当前是否是购物车界面
     /*本地广播相关*/
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         /*购物车列表相关*/
-        final SimpleAdapter mSimpleAdapter = new SimpleAdapter(this, mShoppingCartList, R.layout.shopping_cart_item,
+        mSimpleAdapter = new SimpleAdapter(this, mShoppingCartList, R.layout.shopping_cart_item,
                 new String[] {"first_letter","name", "price"},
                 new int[] {R.id.product_name_firstLetter2, R.id.product_name2, R.id.product_price2});
         mListView.setAdapter(mSimpleAdapter);
@@ -209,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
             temp.put("name", targetProductName);
             temp.put("price", targetProductPrice);
             mShoppingCartList.add(temp);
+            mSimpleAdapter.notifyDataSetChanged();
         }
     }
 
