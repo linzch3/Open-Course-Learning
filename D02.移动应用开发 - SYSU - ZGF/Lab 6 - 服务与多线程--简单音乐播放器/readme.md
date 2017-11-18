@@ -64,6 +64,9 @@
 - [Handler sendMessage 与 obtainMessage (sendToTarget)比较][6]
 - [android中常用的finish()与onDestroy()的区别][7]
 - [ObjectAnimator 基本使用][8]
+- [Android里Service的bindService()和startService()混合使用深入分析][10]
+- [android service startService与bindService的区别][11]
+- [android中finish()与system.exit(0)的区别？][12]
 
 
 [1]:http://bbs.zol.com.cn/softbbs/d21_187366.html
@@ -75,4 +78,6 @@
 [7]:http://blog.csdn.net/lanxingfeifei/article/details/50662133
 [8]:http://wiki.jikexueyuan.com/project/android-animation/7.html
 [9]:http://blog.csdn.net/ouyang_peng/article/details/54023240
-
+[10]:http://blog.csdn.net/yuzhiboyi/article/details/7558176
+[11]:http://blog.csdn.net/zhuangyalei/article/details/47083279
+[12]:http://blog.csdn.net/qq_30498273/article/details/50696204
