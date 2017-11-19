@@ -393,6 +393,12 @@ public class MusicBinder extends Binder{
 
 前面提到，MusicService类需要读取手机内置SD卡根目录下的`melt.mp3`文件，因此需要先申请读取文件的权限，该部分操作在MainActivity中实现。
 
+涉及到权限相关的东西，自然就要在AndroidManifest.xml中声明相关权限了，因此需要在其中添加如下代码：
+
+```xml
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+```
+
 首先在类中声明如下变量：
 
 ```java
