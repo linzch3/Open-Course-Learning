@@ -4,7 +4,6 @@
     - [实验过程](#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B)
         - [step 0: 实验思路](#step-0-%E5%AE%9E%E9%AA%8C%E6%80%9D%E8%B7%AF)
         - [step 1: 界面显示实现及相关初始化操作](#step-1-%E7%95%8C%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%AE%9E%E7%8E%B0%E5%8F%8A%E7%9B%B8%E5%85%B3%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C)
-            - [实现效果](#%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C)
         - [step 2: 图片旋转动画实现](#step-2-%E5%9B%BE%E7%89%87%E6%97%8B%E8%BD%AC%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0)
         - [step 3: MusicService类实现](#step-3-musicservice%E7%B1%BB%E5%AE%9E%E7%8E%B0)
         - [step 4: 实现动态获取文件读取权限](#step-4-%E5%AE%9E%E7%8E%B0%E5%8A%A8%E6%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%9D%83%E9%99%90)
@@ -172,6 +171,24 @@
 
 这里用SeekBar控件来实现音乐的进度条显示；进度条相关部分和三个按钮都使用RelativeLayout实现，总体布局使用ConstraintLayout实现。
 
+这里用到一个trick，若想在ConstraintLayout中让一个元素居中显示，可以选择如下配置方式：
+
+```r
+android:layout_width="0dp"
+app:layout_constraintLeft_toLeftOf="parent"
+app:layout_constraintRight_toRightOf="parent"
+```
+
+而若想在RelativeLayout中让一个元素居中显示，便可选择如下配置方式：
+
+```r
+android:layout_centerHorizontal="true"
+```
+
+预览效果如下：
+
+![](./images/2.png)
+
 接着在MainActivity中声明如下变量：
 
 ```java
@@ -206,26 +223,6 @@ public final static String STATUS_DEFAULT = "";
 public final static String STATUS_PLAYING = "Playing";
 public final static String STATUS_PAUSED = "Paused";
 public final static String STATUS_STOPPED = "Stopped";
-```
-
-#### 实现效果
-
-预览效果如下：
-
-![](./images/2.png)
-
-这里用到一个trick，若想在ConstraintLayout中让一个元素居中显示，可以选择如下配置方式：
-
-```r
-android:layout_width="0dp"
-app:layout_constraintLeft_toLeftOf="parent"
-app:layout_constraintRight_toRightOf="parent"
-```
-
-而若想在RelativeLayout中让一个元素居中显示，便可选择如下配置方式：
-
-```r
-android:layout_centerHorizontal="true"
 ```
 
 ### step 2: 图片旋转动画实现
@@ -509,7 +506,7 @@ startService(bindIntent);//开启服务
 bindService(bindIntent, mMusicServiceConnection, BIND_AUTO_CREATE);//绑定服务
 ```
 
-这里通过`startService()`函数来开启服务并通过`bindService()`函数来绑定函数。其中，当服务绑定成功时`mMusicServiceConnection`的`onServiceConnected`函数会被调用（在此期中，服务的`onBind()`函数也会被调用），因此可以在`onServiceConnected`函数给mMusicBinder初始化，并在此处调用`initMediaPlayer()`函数初始化播放器。
+这里通过`startService()`函数来开启服务并通过`bindService()`函数来绑定函数。其中，当服务绑定成功时`mMusicServiceConnection`的`onServiceConnected`函数会被调用（在此期间，服务的`onBind()`函数也会被调用），因此可以在`onServiceConnected`函数给mMusicBinder初始化，并在此处调用`initMediaPlayer()`函数初始化播放器。
 
 其中，`initMediaPlayer()`函数实现如下，其通过mMusicBinder调用`transact()`函数来发送初始化播放器的信息到后台服务中。
 
@@ -780,12 +777,14 @@ seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
 最终实现效果如下图：
 
+![](./images/4.png)
+
+检查后如下4个功能均已实现：
+
 - [x] 1.播放、暂停、停止、退出功能；
 - [x] 2.后台播放功能；
 - [x] 3.进度条显示播放进度、拖动进度条改变进度功能；
 - [x] 4.播放时图片旋转，显示当前播放时间功能；
-
-![](./images/4.png)
 
 ## 遇到的问题及解决方案
 
