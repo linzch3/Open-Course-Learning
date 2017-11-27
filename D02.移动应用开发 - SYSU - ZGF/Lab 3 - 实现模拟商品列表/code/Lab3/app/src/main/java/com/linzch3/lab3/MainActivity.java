@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(animationAdapter);
 
-        mProductAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
+        mProductAdapter.setOnItemClickListener(new ProductAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onClick(int position) {
                 /*点击跳转*/

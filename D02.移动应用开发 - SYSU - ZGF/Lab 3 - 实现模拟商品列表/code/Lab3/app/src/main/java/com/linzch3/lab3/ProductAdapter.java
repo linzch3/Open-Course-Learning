@@ -12,22 +12,23 @@ import java.util.List;
  * Created by linzch3 on 2017/10/21.
  */
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
     private List<Product> mProductList;
-    private OnItemClickListener mOnItemClickListener;
+    private OnRecyclerViewItemClickListener mOnItemClickListener = null;
 
     public  ProductAdapter(List<Product> productList){
         mProductList = productList;
     }
 
+
     /**********实现RecyclerView子项点击需自行实现的函数**********/
-    public interface OnItemClickListener{
+    public interface OnRecyclerViewItemClickListener{
         /*定义点击和长按的方法，在子类中实现*/
         void onClick(int position);
         void onLongClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener onItemClickListener){
         /*设置监听器*/
         this.mOnItemClickListener = onItemClickListener;
     }
@@ -45,7 +46,23 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         /*创建ViewHolder实例*/
        View view = LayoutInflater.from(parent.getContext())
                                  .inflate(R.layout.product_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        //将创建的View注册点击事件
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(mOnItemClickListener!=null)
+                    mOnItemClickListener.onClick(holder.getAdapterPosition());
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(mOnItemClickListener!=null)
+                    mOnItemClickListener.onLongClick(holder.getAdapterPosition());
+                return false;
+            }
+        });
         return holder;
     }
 
@@ -55,21 +72,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Product product = mProductList.get(position);
         holder.productName.setText(product.getName());
         holder.productName_firstLetter.setText(product.getName_firstLetter());
-        if(mOnItemClickListener!=null){
-            holder.itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    mOnItemClickListener.onClick(holder.getAdapterPosition());
-                }
-            });
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mOnItemClickListener.onLongClick(holder.getAdapterPosition());
-                    return false;
-                }
-            });
-        }
     }
 
     @Override

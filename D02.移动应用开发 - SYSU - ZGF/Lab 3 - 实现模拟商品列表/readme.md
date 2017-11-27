@@ -291,20 +291,20 @@ public class Product {
 ```java
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private List<Product> mProductList;
-    private OnItemClickListener mOnItemClickListener;
+    private OnRecyclerViewItemClickListener mOnItemClickListener;
 
     public  ProductAdapter(List<Product> productList){
         mProductList = productList;
     }
 
     /**********实现RecyclerView子项点击需自行实现的函数**********/
-    public interface OnItemClickListener{
+    public interface OnRecyclerViewItemClickListener{
         /*定义点击和长按的方法，在子类中实现*/
         void onClick(int position);
         void onLongClick(int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+    public void setOnItemClickListener(OnRecyclerViewItemClickListener onItemClickListener){
         /*设置监听器*/
         this.mOnItemClickListener = onItemClickListener;
     }
@@ -323,6 +323,22 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
        View view = LayoutInflater.from(parent.getContext())
                                  .inflate(R.layout.product_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
+        //将创建的View注册点击事件
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(mOnItemClickListener!=null)
+                    mOnItemClickListener.onClick(holder.getAdapterPosition());
+            }
+        });
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(mOnItemClickListener!=null)
+                    mOnItemClickListener.onLongClick(holder.getAdapterPosition());
+                return false;
+            }
+        });
         return holder;
     }
 
@@ -332,21 +348,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         Product product = mProductList.get(position);
         holder.productName.setText(product.getName());
         holder.productName_firstLetter.setText(product.getName_firstLetter());
-        if(mOnItemClickListener!=null){
-            holder.itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v){
-                    mOnItemClickListener.onClick(holder.getAdapterPosition());
-                }
-            });
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-                    mOnItemClickListener.onLongClick(holder.getAdapterPosition());
-                    return false;
-                }
-            });
-        }
     }
 
     @Override
@@ -414,7 +415,7 @@ animationAdapter.setInterpolator(new OvershootInterpolator());
 mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 mRecyclerView.setAdapter(animationAdapter);
 
-mProductAdapter.setOnItemClickListener(new ProductAdapter.OnItemClickListener() {
+mProductAdapter.setOnItemClickListener(new ProductAdapter.OnRecyclerViewItemClickListener() {
     @Override
     public void onClick(int position) {
         /*点击跳转*/
