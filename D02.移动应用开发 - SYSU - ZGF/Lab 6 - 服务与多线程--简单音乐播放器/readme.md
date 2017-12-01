@@ -14,6 +14,7 @@
             - [停止按钮](#%E5%81%9C%E6%AD%A2%E6%8C%89%E9%92%AE)
             - [退出按钮](#%E9%80%80%E5%87%BA%E6%8C%89%E9%92%AE)
         - [step 8: 进度条拖动监听事件处理](#step-8-%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%8B%96%E5%8A%A8%E7%9B%91%E5%90%AC%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86)
+        - [step 9: 重写按下返回键的触发函数](#step-9-%E9%87%8D%E5%86%99%E6%8C%89%E4%B8%8B%E8%BF%94%E5%9B%9E%E9%94%AE%E7%9A%84%E8%A7%A6%E5%8F%91%E5%87%BD%E6%95%B0)
     - [最终实现效果](#%E6%9C%80%E7%BB%88%E5%AE%9E%E7%8E%B0%E6%95%88%E6%9E%9C)
     - [遇到的问题及解决方案](#%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
     - [参考资料](#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99)
@@ -774,6 +775,23 @@ seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             }
         }
     });
+}
+```
+
+### step 9: 重写按下返回键的触发函数
+
+实现了上面的所有代码之后，发现如果先按下返回键再点击app图标，那么MainActivity会再次调用onCreate函数。而如果按下Home键再点击app图标，那么MainAcitvity就不会再次创建，因此，为了修复这个问题，便萌生了将Back键实现为Home键功能的想法。
+
+在MainAcitivity中实现如下代码即可：
+
+```java
+@Override
+public void onBackPressed() {
+    //实现Home效果
+    Intent intent = new Intent(Intent.ACTION_MAIN);
+    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.addCategory(Intent.CATEGORY_HOME);
+    startActivity(intent);
 }
 ```
 
