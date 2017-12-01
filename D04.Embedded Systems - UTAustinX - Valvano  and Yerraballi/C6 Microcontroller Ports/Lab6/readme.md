@@ -1,6 +1,34 @@
 
 # Lab6
 
+## background
+
+Pseudo code:
+
+```py
+main     Turn on the clock for Port F
+               Clear the PF4 and PF2 bits in Port F AMSEL to disable analog
+               Clear the PF4 and PF2 bit fields in Port F PCTL to configure as GPIO
+               Set the Port F direction register so 
+                                PF4 is an input and 
+                                PF2 is an output
+               Clear the PF4 and PF2 bits in Port F AFSEL to disable alternate functions
+               Set the PF4 and PF2 bits in Port F DEN to enable digital
+               Set the PF4 bit in Port F PUR to activate an internal pullup resistor
+               Set the PF2 bit in Port F DATA so the LED is initially ON
+loop       Delay about 100 ms
+                Read the switch and test if the switch is pressed
+                If PF4=0 (the switch is pressed),
+                                toggle PF2 (flip bit from 0 to 1, or from 1 to 0)
+                If PF4=1 (the switch is not pressed), 
+                                set PF2, so LED is ON
+                Go to loop
+```
+
+flowchart:
+
+![](./images/1.gif)
+
 ## simulation
 
 talk is cheap, show you the code:
