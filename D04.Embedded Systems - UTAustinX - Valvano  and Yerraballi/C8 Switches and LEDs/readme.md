@@ -1,4 +1,8 @@
-
+- [C8 Switches and LEDs](#c8-switches-and-leds)
+    - [8.1 intro](#81-intro)
+    - [8.2 Switch Interfaces](#82-switch-interfaces)
+    - [8.3 LED Interfaces](#83-led-interfaces)
+    - [8.4 Design Example](#84-design-example)
 
 # C8 Switches and LEDs  
 
