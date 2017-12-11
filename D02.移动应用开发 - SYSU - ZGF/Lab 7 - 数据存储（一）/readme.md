@@ -248,6 +248,10 @@ void setupButton(){
 
 实现逻辑严格按照实现要求，这里不再赘述其实现。
 
+到了这一步，还有一个很重要的地方需要实现，那就是当activity不可见的时候从其他activity按下返回键可以之间退出到Home。
+
+实现思路很简单，在AndroidManifest.xml中设置对应的acitvity的`android:noHistory=true`即可。
+
 至此，密码输入activity实现完毕。
 
 ### step3:实现文件编辑activity布局
