@@ -20,5 +20,7 @@ end
 hold on
 contour(X1, X2, vals, [0.5 0.5], 'b');
 hold off;
-
+% debug variable
+% a = length(vals(:))
+% b = length(find(vals(:)==1))
 end

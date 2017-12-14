@@ -59,7 +59,7 @@ while ~isempty(email_contents)
     % Tokenize and also get rid of any punctuation
     [str, email_contents] = ...
        strtok(email_contents, ...
-              [' @$/#.-:&*+=[]?!(){},''">_<;%' char(10) char(13)]);
+              [' @$/#.-:&*+=[]?!(){},''">_<;%' newline char(13)]);
    
     % Remove any non alphanumeric characters
     str = regexprep(str, '[^a-zA-Z0-9]', '');
@@ -96,18 +96,15 @@ while ~isempty(email_contents)
     % Note: You can use strcmp(str1, str2) to compare two strings (str1 and
     %       str2). It will return 1 only if the two strings are equivalent.
     %
-
-
-
-
-
-
-
-
-
-
+    
+    for i = 1:length(vocabList)
+       if strcmp(vocabList{i}, str)
+           word_indices = [word_indices ; i];
+           break
+       end
+    end
+    
     % =============================================================
-
 
     % Print to screen, ensuring that the output lines are not too long
     if (l + length(str) + 1) > 78
