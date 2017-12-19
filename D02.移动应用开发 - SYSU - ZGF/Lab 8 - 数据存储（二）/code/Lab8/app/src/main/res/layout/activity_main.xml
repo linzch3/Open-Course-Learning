@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.linzch3.lab8.MainActivity">
+
+    <Button
+        android:id="@+id/additem_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="增加条目"
+        android:textColor="#FFFFFF"
+        android:background="#05C654" />
+
+    <TextView
+        android:id="@+id/name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="姓名"
+        app:layout_constraintTop_toBottomOf="@id/additem_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="40dp"/>
+
+    <TextView
+        android:id="@+id/birthday_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="生日"
+        app:layout_constraintTop_toBottomOf="@id/additem_button"
+        app:layout_constraintLeft_toRightOf="@id/name_text"
+
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:id="@+id/gift_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="礼物"
+        app:layout_constraintTop_toBottomOf="@id/additem_button"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="50dp"/>
+
+    <View
+        android:id="@+id/shadow_area"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        app:layout_constraintTop_toBottomOf="@id/birthday_text"
+        android:layout_marginTop="15dp"
+        android:background="#DCDCDC"/>
+
+    <ListView
+        android:id="@+id/contacts_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/shadow_area">
+    </ListView>
+
+</android.support.constraint.ConstraintLayout>
