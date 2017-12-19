@@ -62,10 +62,9 @@ public class DataBaseManager extends SQLiteOpenHelper {
        SQLiteDatabase writableDatabase = getWritableDatabase();
        String querySQL = String.format("SELECT * FROM Contacts WHERE name = '%s';", name);
        Cursor cursor = writableDatabase.rawQuery(querySQL, null);
-       if(cursor.getCount()==1)
-           return true;
-       else
-           return false;
+       int temp = cursor.getCount();
+       cursor.close();
+       return temp==1;
    }
     /**********增删改查*****************/
 }
