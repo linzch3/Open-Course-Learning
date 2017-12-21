@@ -1,11 +1,19 @@
 
-# Lab 10
+# Lab 11
 
 ## 实验要求
 
-打开工程文件`\Keil\EE319KwareSpring2016\Profile_4C123`，仿真完成后把相应端口PA3,4,5换成PF1，2,3。重新对端口初始化设置。先设置每1s Time定时中断并PF2切换亮灭，改变定时初值观察结果。再对系统定时器中断时间重新设定为10ms,在其中断服务程序中对PF3切换状态.
+本实验对应工程文件为：`\Keil\EE319KwareSpring2016\Profile_4C123`。
+
+任务一：仿真完成后把相应端口PA3,4,5换成PF1,2,3。重新对端口初始化设置。
+
+任务二：设置每0.2s Time定时中断并PF2切换亮灭，改变定时初值观察结果。
+
+任务三：对系统定时器中断时间重新设定为10ms，在其中断服务程序中对PF3切换状态。
 
 ## 实验过程
+
+### 任务一：仿真完成后把相应端口PA3,4,5换成PF1,2,3。重新对端口初始化设置。
 
 修改代码之前的仿真结果如下：
 
@@ -17,7 +25,7 @@
 - 第二个红色框标记的是PA3中断PA5的现象，可见前者优先级相对较高。
 - 第三个红色框标记的是PA4中断PA5的现象，可见前者优先级相对较高。
 
-为了更清晰的地解释修改的过程，下面先总结如下表：
+为了更清晰地解释修改的过程，下面先总结如下表：
 
 线程 | 修改之前对应的端口 | 修改之后对应的端口
 :-:|:-:|:-:|
@@ -25,7 +33,7 @@ main |PA5 | PF1
 SysTick ISR| PA4 | PF3
 Time0 ISR | PA3 | PF2
 
-接着是对优先级设置的说明:
+接着是对中断优先级设置的说明:
 
 修改代码之前的优先级为：SysTick ISR > Time0 ISR > main，对应端口优先级为PA4 > PA3 > PA5。
 
@@ -138,7 +146,70 @@ int main(void){
 
 可看到出现了PF3中断PF1、PF2中断PF1的现象，符合预期效果。
 
+### 任务二：设置每0.2s Time定时中断并PF2切换亮灭，改变定时初值观察结果。
 
+首先，必须得说明一下，在不改SYSDIV和LSB的情况下，也即是原始的时钟频率为50MHZ的前提下，并且只能改Timer0A_Init传入的参数的数值的前提下，设置每1s Time0A定时中断是**不可实现的**。但是在keil的仿真上却能在这种情况下仿真出没每1s改变PF2波形的效果出来，所以这又是keil的一个bug了。**因此仿真的截图是没有意义的==**
 
+证明：TIMER0_TAILR_R可指定的最大值为2^16，TIMER0_TAPR_R可指定的最大值为2^8，因此可得出的最小频率为：50MHZ/2^16/2^8=2.98023223877HZ > 1HZ
+
+下面进入正题。。。
+
+----
+
+经过了上面的分析，实现0.2s定时中断，也即是PF2切换频率为5HZ。想着如果要改Timer0A_Init传入的参数period和分频值就有点麻烦，于是便打算改其他地方。
+
+首先设定Timer0A_Inits传入的参数为20000（只要不超过65536即可，但之所以选这个数是方便后续计算），假定基础时钟频率为X HZ，则有：`5Hz = X HZ/(49+1)/20000`，得：X = 5MHZ。
+
+这里的49是从Timer0A_Inits中的这行代码得到的：`TIMER0_TAPR_R = 49;              // 5) 1us timer0A`
+
+再看到工程文件上面的一些宏定义，可看到如下这些信息：
+
+```c
+// The two #define statements SYSDIV and LSB 0 
+// initialize the PLL to the desired frequency.
+#define SYSDIV 3
+#define LSB 1
+// bus frequency is 400MHz/(2*SYSDIV+1+LSB) = 400MHz/(2*3+1+1) = 50 MHz
+```
+
+也即是修改SYSDIV即可达到目的了，即是说必须有：`400MHz/(2*SYSDIV+1+1) = X HZ = 5MHz`，可得 SYSDIV = 39。
+
+因此修改`#define SYSDIV 3`为`#define SYSDIV 39`即可。
+
+接着为了能在板子上分辨出实验效果，修改如下函数：
+
+```c
+void Timer0A_Handler(void){
+    //PA3 = 0x08;
+    //GPIO_PORTF_DATA_R |= 0x04; //PF2 high
+    GPIO_PORTF_DATA_R ^= 0x04; //toggle PF2
+    TIMER0_ICR_R = TIMER_ICR_TATOCINT;// acknowledge timer0A timeout
+    //PA3 = 0;
+    //GPIO_PORTF_DATA_R &= ~0x04;//PF2 low
+}
+```
+
+同时注释main函数中while循环的代码：
+
+```c
+  while(1){
+    //PA5 = PA5^0x20;  
+    //GPIO_PORTF_DATA_R ^= 0x02; // toggle PF1
+  }
+```
+
+修改代码后在板子上运行后可观察到大概0.2*2=0.4s蓝灯就会闪一次（仿真就不做了，有bug）。
+
+### 任务三：对系统定时器中断时间重新设定为10ms，在其中断服务程序中对PF3切换状态。
+
+首先，先注释掉Timer0A_Handler中切换PF2灯光的代码：`GPIO_PORTF_DATA_R ^= 0x04; //toggle PF2`。
+
+10ms也即是对应100HZ，即有`100Hz = 5*10^6HZ/5*10^4`，故SysTick_Init传入参数为50000。
+
+100HZ肉眼无法验证，这里还是用仿真吧（对实验涉及到的SysTick相关的部分仿真倒是没有问题），仿真后的结果如下：
+
+![](./images/3.png)
+
+每个grid为5ms，可看到每隔10msPF3切换一次。
 
 
