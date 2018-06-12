@@ -1,119 +1,121 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "power", "power\power.vcproj", "{D69E35BA-2317-4AF7-B2BE-808E492078AF}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "power", "power\power.vcxproj", "{D69E35BA-2317-4AF7-B2BE-808E492078AF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "stack\stack.vcproj", "{9CD749B2-2747-4DB2-9272-1B698EF9224A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "stack", "stack\stack.vcxproj", "{9CD749B2-2747-4DB2-9272-1B698EF9224A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sum", "sum\sum.vcproj", "{F4C7E29F-99AE-49E3-A55B-CA8E3BCAD9C5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sum", "sum\sum.vcxproj", "{F4C7E29F-99AE-49E3-A55B-CA8E3BCAD9C5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vector", "vector\vector.vcproj", "{AA0C1F4D-15AA-401F-A8A3-D5CF592DF35E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vector", "vector\vector.vcxproj", "{AA0C1F4D-15AA-401F-A8A3-D5CF592DF35E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nest_recursive", "nest_recursive\paren_recursive.vcproj", "{EB1BC5BD-0926-4530-9CB9-195201654C8D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nest_recursive", "nest_recursive\paren_recursive.vcxproj", "{EB1BC5BD-0926-4530-9CB9-195201654C8D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nest_stack", "nest_stack\paren_stack.vcproj", "{36CC4CA5-DEDB-4DF1-A581-2F13810EAE79}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "nest_stack", "nest_stack\paren_stack.vcxproj", "{36CC4CA5-DEDB-4DF1-A581-2F13810EAE79}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_brute_force_2", "queen_brute_force_2\queen_brute_force_2.vcproj", "{51CCC893-202C-4F56-942D-4BE73970120C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_brute_force_2", "queen_brute_force_2\queen_brute_force_2.vcxproj", "{51CCC893-202C-4F56-942D-4BE73970120C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_brute_force_1", "queen_brute_force_1\queen_brute_force_1.vcproj", "{246FBECE-7B05-4B0B-9C2D-9FA52B6CEFEB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_brute_force_1", "queen_brute_force_1\queen_brute_force_1.vcxproj", "{246FBECE-7B05-4B0B-9C2D-9FA52B6CEFEB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_recursive", "queen_recursive\queen_recursive.vcproj", "{37248A69-33C1-4894-9334-4C601BC62F73}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_recursive", "queen_recursive\queen_recursive.vcxproj", "{37248A69-33C1-4894-9334-4C601BC62F73}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_stack", "queen_stack\queen_stack.vcproj", "{E86008ED-0BF4-4DE1-9644-00DBDF5DBFAC}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queen_stack", "queen_stack\queen_stack.vcxproj", "{E86008ED-0BF4-4DE1-9644-00DBDF5DBFAC}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queue", "queue\queue.vcproj", "{8C20B3E0-2E5A-4B8D-88C1-BABCB71C9D98}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "queue", "queue\queue.vcxproj", "{8C20B3E0-2E5A-4B8D-88C1-BABCB71C9D98}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinTree", "binTree\binTree.vcproj", "{6FB49C32-97BD-43CE-997B-D86178877C80}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinTree", "binTree\binTree.vcxproj", "{6FB49C32-97BD-43CE-997B-D86178877C80}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skiplist", "skiplist\skiplist.vcproj", "{F55FC458-1860-4E60-A4BB-182EFDBE82C7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skiplist", "skiplist\skiplist.vcxproj", "{F55FC458-1860-4E60-A4BB-182EFDBE82C7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpn", "rpn\rpn.vcproj", "{294D5A03-CA5E-490E-82B2-924253D9D81A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rpn", "rpn\rpn.vcxproj", "{294D5A03-CA5E-490E-82B2-924253D9D81A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "huffman", "huffman\huffman.vcproj", "{8A24E47D-AC42-4381-962E-515599E36709}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "huffman", "huffman\huffman.vcxproj", "{8A24E47D-AC42-4381-962E-515599E36709}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BST", "BST\BST.vcproj", "{23DEF702-54D0-40AA-8483-38D88C77B85B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BST", "BST\BST.vcxproj", "{23DEF702-54D0-40AA-8483-38D88C77B85B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AVL", "AVL\AVL.vcproj", "{7D2E7FF0-F097-43FE-A092-1FC715AA9FE7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AVL", "AVL\AVL.vcxproj", "{7D2E7FF0-F097-43FE-A092-1FC715AA9FE7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splay", "splay\Splay.vcproj", "{EC89FA13-E20E-458F-9D70-26020B2066F7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Splay", "splay\Splay.vcxproj", "{EC89FA13-E20E-458F-9D70-26020B2066F7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prime", "prime\prime.vcproj", "{417D479C-0739-41C1-9788-1EAAC70E7CC5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "prime", "prime\prime.vcxproj", "{417D479C-0739-41C1-9788-1EAAC70E7CC5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hashtable", "hashtable\hashtable.vcproj", "{7C45335C-D9CD-4726-8B8C-E85CFD3982E7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hashtable", "hashtable\hashtable.vcxproj", "{7C45335C-D9CD-4726-8B8C-E85CFD3982E7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RedBlack", "redBlack\RedBlack.vcproj", "{37F1CFAE-77E5-4B02-8709-9902F79DCAC7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RedBlack", "redBlack\RedBlack.vcxproj", "{37F1CFAE-77E5-4B02-8709-9902F79DCAC7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_ComplHeap", "PQ_ComplHeap\PQ_BinHeap.vcproj", "{52374F30-FFF3-4398-BC26-89629B608A48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_ComplHeap", "PQ_ComplHeap\PQ_BinHeap.vcxproj", "{52374F30-FFF3-4398-BC26-89629B608A48}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_ComplHeap", "Huffman_PQ_ComplHeap\Huffman_PQ_ComplHeap.vcproj", "{AD075C14-B4B1-413C-BB0C-DFDA7112D845}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_ComplHeap", "Huffman_PQ_ComplHeap\Huffman_PQ_ComplHeap.vcxproj", "{AD075C14-B4B1-413C-BB0C-DFDA7112D845}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_leftHeap", "PQ_leftHeap\PQ_leftHeap.vcproj", "{0B5562D8-7E5B-4531-A169-90548DE445CD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_leftHeap", "PQ_leftHeap\PQ_leftHeap.vcxproj", "{0B5562D8-7E5B-4531-A169-90548DE445CD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_LeftHeap", "Huffman_PQ_LeftHeap\Huffman_PQ_LeftHeap.vcproj", "{88FDEA8C-610B-4DDF-ACCC-231541B5B3DE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_LeftHeap", "Huffman_PQ_LeftHeap\Huffman_PQ_LeftHeap.vcxproj", "{88FDEA8C-610B-4DDF-ACCC-231541B5B3DE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_List", "PQ_List\PQ_List.vcproj", "{FD966464-81A8-4524-B165-718A413EC1CF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PQ_List", "PQ_List\PQ_List.vcxproj", "{FD966464-81A8-4524-B165-718A413EC1CF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_List", "Huffman_PQ_List\Huffman_PQ_List.vcproj", "{4238B7E3-0C9D-4B51-9459-607BB702A731}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Huffman_PQ_List", "Huffman_PQ_List\Huffman_PQ_List.vcxproj", "{4238B7E3-0C9D-4B51-9459-607BB702A731}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prefix_free_Codes", "Prefix_free_Codes\Prefix_free_Codes.vcproj", "{1E65C664-5FD9-4771-980C-7457A24787F3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Prefix_free_Codes", "Prefix_free_Codes\Prefix_free_Codes.vcxproj", "{1E65C664-5FD9-4771-980C-7457A24787F3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bf1", "string_pm_bf1\string_pm_bf1.vcproj", "{A4FC950E-1DB9-4195-93E2-1AAFF29629C5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bf1", "string_pm_bf1\string_pm_bf1.vcxproj", "{A4FC950E-1DB9-4195-93E2-1AAFF29629C5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bf2", "string_pm_bf2\string_pm_bf2.vcproj", "{85C69346-34D0-4EB6-AF1B-7A243EF5E982}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bf2", "string_pm_bf2\string_pm_bf2.vcxproj", "{85C69346-34D0-4EB6-AF1B-7A243EF5E982}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kmp", "string_pm_kmp\string_pm_kmp.vcproj", "{965DCC9D-A55A-4F6B-AF4F-4A1B03703BCD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kmp", "string_pm_kmp\string_pm_kmp.vcxproj", "{965DCC9D-A55A-4F6B-AF4F-4A1B03703BCD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kmp_improved", "string_pm_kmp_improved\string_pm_kmp_improved.vcproj", "{2FA5DBBB-8AED-46CF-926A-0664D2BE9781}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kmp_improved", "string_pm_kmp_improved\string_pm_kmp_improved.vcxproj", "{2FA5DBBB-8AED-46CF-926A-0664D2BE9781}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bm_bc", "string_pm_bm_bc\string_pm_bm_bc.vcproj", "{D12D18B1-BF67-44F8-96E3-5C8A50279179}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bm_bc", "string_pm_bm_bc\string_pm_bm_bc.vcxproj", "{D12D18B1-BF67-44F8-96E3-5C8A50279179}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bm_bc+gs", "string_pm_bm_bc+gs\string_pm_bm_bc+gs.vcproj", "{66BC45C5-D943-4347-BFF6-CD99C0350814}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_bm_bc+gs", "string_pm_bm_bc+gs\string_pm_bm_bc+gs.vcxproj", "{66BC45C5-D943-4347-BFF6-CD99C0350814}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kr", "string_pm_kr\string_pm_kr.vcproj", "{1AD7091C-1BD5-4ED5-825F-AC2E41427105}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "string_pm_kr", "string_pm_kr\string_pm_kr.vcxproj", "{1AD7091C-1BD5-4ED5-825F-AC2E41427105}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BTree", "BTree\BTree.vcproj", "{2605B3C9-757A-457B-A966-D687B3E2133C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BTree", "BTree\BTree.vcxproj", "{2605B3C9-757A-457B-A966-D687B3E2133C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "median1", "median1\median1.vcproj", "{B350D20B-1812-4378-B7A8-A8D2ABCF9CA4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "median1", "median1\median1.vcxproj", "{B350D20B-1812-4378-B7A8-A8D2ABCF9CA4}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "median2", "median2\median2.vcproj", "{AC5D9F73-FB36-42F6-AD54-D2B033F015E5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "median2", "median2\median2.vcxproj", "{AC5D9F73-FB36-42F6-AD54-D2B033F015E5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphMatrix", "graphmatrix\graphMatrix.vcproj", "{5220DF1B-BE3A-4FD9-B16A-9A7DAE747BAB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "graphMatrix", "graphmatrix\graphMatrix.vcxproj", "{5220DF1B-BE3A-4FD9-B16A-9A7DAE747BAB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "countones", "countones\countones.vcproj", "{B7CC2C1B-5D2D-4585-A4E2-910A85F2352E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "countones", "countones\countones.vcxproj", "{B7CC2C1B-5D2D-4585-A4E2-910A85F2352E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "conversion_recursive", "conversion_recursive\conversion_recursive.vcproj", "{00A10E39-BB94-4FB7-BAA8-B3CDDA98FEA8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "conversion_recursive", "conversion_recursive\conversion_recursive.vcxproj", "{00A10E39-BB94-4FB7-BAA8-B3CDDA98FEA8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gcd", "gcd\gcd.vcproj", "{F2C493AF-1D1C-4DE4-9C41-C8B7940CC936}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gcd", "gcd\gcd.vcxproj", "{F2C493AF-1D1C-4DE4-9C41-C8B7940CC936}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fibonacci", "Fibonacci\Fibonacci.vcproj", "{7EF4C9A7-2FF2-4E37-8920-D19E6422317C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fibonacci", "Fibonacci\Fibonacci.vcxproj", "{7EF4C9A7-2FF2-4E37-8920-D19E6422317C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "factorial", "factorial\factorial.vcproj", "{F1398F6D-2D0F-42A6-86D1-B72BE568E04A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "factorial", "factorial\factorial.vcxproj", "{F1398F6D-2D0F-42A6-86D1-B72BE568E04A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simu", "simu\simu.vcproj", "{6AC59509-F873-4C7F-A8F0-C4D84C1F71FD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "simu", "simu\simu.vcxproj", "{6AC59509-F873-4C7F-A8F0-C4D84C1F71FD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "majority", "majority\majority.vcproj", "{82452657-9E96-40F8-B42E-AC598B2E2CCF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "majority", "majority\majority.vcxproj", "{82452657-9E96-40F8-B42E-AC598B2E2CCF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "selection", "selection\selection.vcproj", "{5A3D38D6-0DE3-4BF9-BB11-44928C2DA737}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "selection", "selection\selection.vcxproj", "{5A3D38D6-0DE3-4BF9-BB11-44928C2DA737}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubblesort", "bubblesort\bubblesort.vcproj", "{88378EA2-3EE4-4E06-9DF7-CE8ED941CEE7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "bubblesort", "bubblesort\bubblesort.vcxproj", "{88378EA2-3EE4-4E06-9DF7-CE8ED941CEE7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "conversion", "conversion\conversion.vcproj", "{D1A50F18-EFFD-4069-80B6-B530D6C7E118}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "conversion", "conversion\conversion.vcxproj", "{D1A50F18-EFFD-4069-80B6-B530D6C7E118}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "daxue", "daxue\daxue.vcproj", "{51637B3D-11F4-404A-95FD-78A742570948}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "daxue", "daxue\daxue.vcxproj", "{51637B3D-11F4-404A-95FD-78A742570948}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hanoi", "hanoi\hanoi.vcproj", "{ED3364A6-3136-4D67-AEDC-06E846A203A3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hanoi", "hanoi\hanoi.vcxproj", "{ED3364A6-3136-4D67-AEDC-06E846A203A3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "laby", "laby\laby.vcproj", "{02919AB8-9574-47FE-B9DF-E68302CF2B1C}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "laby", "laby\laby.vcxproj", "{02919AB8-9574-47FE-B9DF-E68302CF2B1C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shiftK", "shiftK\shiftK.vcproj", "{E222F042-2B0F-485B-A98A-AA6A11B601C5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shiftK", "shiftK\shiftK.vcxproj", "{E222F042-2B0F-485B-A98A-AA6A11B601C5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "list", "list\list.vcproj", "{6C4EDF7C-A231-4F36-BECC-906CCBB8E566}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "list", "list\list.vcxproj", "{6C4EDF7C-A231-4F36-BECC-906CCBB8E566}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bitmap", "BitMap\bitmap.vcproj", "{B01CD722-EF4C-40BC-B327-377AD027240A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bitmap", "BitMap\bitmap.vcxproj", "{B01CD722-EF4C-40BC-B327-377AD027240A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bitmap_set_only", "Bitmap_set_only\Bitmap_set_only.vcproj", "{CF2F7E4E-9057-4A1A-894F-18B9B796D4F0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bitmap_set_only", "Bitmap_set_only\Bitmap_set_only.vcxproj", "{CF2F7E4E-9057-4A1A-894F-18B9B796D4F0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cursor_list", "cursor_list\cursor_list.vcproj", "{CC24C9F3-6040-432E-B55F-CA1ED29CD84A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cursor_list", "cursor_list\cursor_list.vcxproj", "{CC24C9F3-6040-432E-B55F-CA1ED29CD84A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -352,5 +354,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {861E7A2F-4FCA-4D30-B8D9-94D12565B478}
 	EndGlobalSection
 EndGlobal
