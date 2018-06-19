@@ -14,7 +14,7 @@
 
 **题目描述**：在步骤1的网页的head元素中加入以下style元素,运行后截屏浏览器。
 
-'''
+```html
 <style>
     a:link,a:visited {color:blue;text-decoration:none}
     body,inputC {font-size:24px}
@@ -29,7 +29,7 @@
     #cominput {width:100%;height:100px}
     #comtitle {margin-top:40px}
 </style>
-'''
+```
 
 实现代码位于<a href="./code/answer/2.html">【这里】</a>，实现效果如下：
 
@@ -47,7 +47,7 @@
 
 **题目描述**：把步骤3完成的网页中的head元素中加入以下style元素：
 
-'''
+```html
 <style>
     a:link,a:visited {color:blue;text-decoration:none}
     body,input,textarea {font-size:24px}
@@ -62,7 +62,7 @@
     #cominput {width:100%;height:100px}
     #comtitle {margin-top:40px}
 </style>
-'''
+```
 
 实现代码位于<a href="./code/answer/4.html">【这里】</a>，实现效果如下：
 
