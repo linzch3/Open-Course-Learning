@@ -13,7 +13,8 @@
 ## 步骤2
 
 **题目描述**：在步骤1的网页的head元素中加入以下style元素,运行后截屏浏览器。
-'''python
+
+'''
 <style>
     a:link,a:visited {color:blue;text-decoration:none}
     body,inputC {font-size:24px}
@@ -45,7 +46,8 @@
 ## 步骤4
 
 **题目描述**：把步骤3完成的网页中的head元素中加入以下style元素：
-'''css
+
+'''
 <style>
     a:link,a:visited {color:blue;text-decoration:none}
     body,input,textarea {font-size:24px}
