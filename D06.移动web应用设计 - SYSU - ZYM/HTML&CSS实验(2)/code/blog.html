@@ -1,0 +1,47 @@
+<!DOCTYPE  html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>Blog Edit</title>
+<style type="text/css">
+   *{font-size:20px;font-family:宋体}
+   input[type="text"],textarea {color:#B0B0B0}
+   [for="content"]{vertical-align:top;}
+   fieldset {width:800px;margin:20px auto;padding:20px;background-color:#FCFCFF;}
+   #content {width:700px;height:300px}
+</style>
+</head>
+<body>
+<form>
+
+</form>
+<script type="text/javascript">
+   function inputClick(target){
+     var value="";
+     if(target.id=="title")
+        value="输入博客标题";
+     if(target.id=="keywords")
+        value="输入关键字";
+     if(target.id=="content")
+        value="在这里输入博客内容";
+
+     if(target.value==''){
+       target.style.color="#B0B0B0";
+       target.value=value;
+     }
+     else 
+     if(target.value==value){
+        target.style.color="#000000";
+        target.value="";
+     }
+   };
+   var f1=function(){inputClick(this);};
+   document.getElementById("title").onclick= f1;
+   document.getElementById("keywords").onclick= f1;
+   document.getElementById("content").onclick= f1;
+   document.getElementById("title").onblur= f1;
+   document.getElementById("keywords").onblur= f1;
+   document.getElementById("content").onblur= f1;
+</script>
+</body>
+</html>
