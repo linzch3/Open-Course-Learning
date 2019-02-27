@@ -1,0 +1,28 @@
+
+Python
+Python logo and wordmark.svg
+Paradigm	Multi-paradigm: functional, imperative, object-oriented, reflective
+Designed by	Guido van Rossum
+Developer	Python Software Foundation
+First appeared	1990; 29 years ago[1]
+Stable release	
+3.7.2 / 24 December 2018; 23 days ago[2]
+2.7.15 / 1 May 2018; 8 months ago[3]
+Typing discipline	Duck, dynamic, gradual (since 3.5),[4] strong
+License	Python Software Foundation License
+Filename extensions	.py, .pyc, .pyd, .pyo (prior to 3.5),[5] .pyw, .pyz (since 3.5)[6]
+Website	www.python.org
+Major implementations
+CPython, IronPython, Jython, MicroPython, Numba, PyPy, Stackless Python, CircuitPython
+Dialects
+Cython, RPython
+Influenced by
+ABC,[7] ALGOL 68,[8] APL[9] C,[10] C++,[11] CLU,[12] Dylan,[13] Haskell,[14] Icon,[15] Java,[16] Lisp,[17] Modula-3,[11] Perl, Standard ML[9]
+Influenced
+Boo, Cobra, CoffeeScript,[18] D, F#, Genie,[19] Go, Apache Groovy, JavaScript,[20][21] Julia,[22] Nim, Ring,[23] Ruby,[24] Swift[25]
+ Python Programming at Wikibooks
+Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python has a design philosophy that emphasizes code readability, notably using significant whitespace. It provides constructs that enable clear programming on both small and large scales.[26] Van Rossum led the language community until stepping down as leader in July 2018.[27][28]
+
+Python features a dynamic type system and automatic memory management. It supports multiple programming paradigms, including object-oriented, imperative, functional and procedural, and has a large and comprehensive standard library.[29]
+
+Python interpreters are available for many operating systems. CPython, the reference implementation of Python, is open source software[30] and has a community-based development model, as do nearly all of Python's other implementations. Python and CPython are managed by the non-profit Python Software Foundation.
